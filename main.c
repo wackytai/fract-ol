@@ -6,12 +6,10 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:44:06 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/04/03 15:10:44 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/04/05 16:30:59 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <X11/keysym.h>
 #include "fractol.h"
 #include "./mlx_linux/mlx.h"
 
@@ -22,10 +20,28 @@ int	handle_no_event(void *data)
 	return (0);
 }
 
-int	handle_input(int keysym, t_data *data)
+/* int	handle_input(int keysym, t_data *data)
 {
 	if (keysym == XK_Escape)
 		mlx_destroy_window(data->mlx_ptr, data->win_ptr);
+	return (0);
+} */
+
+int	handle_keypress(int keysym, t_data *data)
+{
+	if (keysym == XK_Escape)
+	{
+		mlx_destroy_window(data->mlx_ptr, data->win_ptr);
+		data->win_ptr = NULL;
+	}
+	printf("Keypress %d\n", keysym);
+	return (0);
+}
+
+int	handle_keyrelease(int keysym, void *data)
+{
+	if (data)
+		printf("Keyrelease: %d\n", keysym);
 	return (0);
 }
 
@@ -39,13 +55,19 @@ int	main(void)
 	data.win_ptr = mlx_new_window(data.mlx_ptr, W_WIDTH, W_HEIGHT, "fract-ol");
 	if (!data.win_ptr)
 	{
-		free(data.mlx_ptr);
+		free(data.win_ptr);
 		return (1);
 	}
+	data.img.mlx_img = mlx_new_image(data.mlx_ptr, W_WIDTH, W_HEIGHT);
+	data.img.addr = mlx_get_data_addr(data.img.mlx_img, &data.img.bpp,
+			&data.img.line_len, &data.img.endian);
 	mlx_loop_hook(data.mlx_ptr, &handle_no_event, &data);
-	mlx_key_hook(data.win_ptr, &handle_input, &data);
+	mlx_loop_hook(data.mlx_ptr, &render, &data);
+	mlx_hook(data.win_ptr, KeyPress, KeyPressMask, &handle_keypress, &data);
+	mlx_hook(data.win_ptr, KeyRelease, KeyReleaseMask, &handle_keyrelease,
+		&data);
 	mlx_loop(data.mlx_ptr);
-	//mlx_destroy_window(data.mlx_ptr, data.win_ptr);
+	mlx_destroy_image(data.mlx_ptr, data.img.mlx_img);
 	mlx_destroy_display(data.mlx_ptr);
 	free(data.mlx_ptr);
 }

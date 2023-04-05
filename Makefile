@@ -3,7 +3,7 @@ LIB = fractol.h
 PRINTF_DIR = ./printf
 PRINTF = ./printf/lib_printf.a
 MLX_DIR = ./mlx_linux
-C_SOURCES = main.c
+C_SOURCES = main.c render.c
 OBJ = $(C_SOURCES:.c=.o)
 REMOVE = @rm -f
 CC = gcc
