@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 14:07:25 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/04/05 16:28:33 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/04/05 16:59:06 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,8 @@ void	img_pix_put(t_img *img, int x, int y, int colour);
 int		render_rect(t_img *img, t_rect rect);
 void	render_background(t_img *img, int colour);
 int		render(t_data *data);
+
+/*fractals.c*/
+void	ft_cantor(t_data *data);
 
 #endif
