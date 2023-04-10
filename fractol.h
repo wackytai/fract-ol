@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 14:07:25 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/04/05 16:59:06 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/04/10 17:10:08 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <X11/keysym.h>
 # include <X11/X.h>
+# include <math.h>
 
 # ifndef W_WIDTH
 #  define W_WIDTH 1920
@@ -43,6 +44,12 @@ typedef struct s_rect
 	int	colour;
 }	t_rect;
 
+typedef struct s_coord
+{
+	double	x;
+	double	y;
+}	t_coord;
+
 typedef struct s_data
 {
 	void	*mlx_ptr;
@@ -52,7 +59,6 @@ typedef struct s_data
 
 /*main.c*/
 int		main(void);
-//int		handle_input(int keysym, t_data *data);
 int		handle_no_event(void *data);
 int		handle_keypress(int keysym, t_data *data);
 int		handle_keyrelease(int keysym, void *data);
@@ -62,8 +68,13 @@ void	img_pix_put(t_img *img, int x, int y, int colour);
 int		render_rect(t_img *img, t_rect rect);
 void	render_background(t_img *img, int colour);
 int		render(t_data *data);
+int		draw_circle(t_img *img, t_rect circle);
 
 /*fractals.c*/
 void	ft_cantor(t_data *data);
+
+/*clean.c*/
+int		destroy_all(t_data *data);
+int		close_window(t_data *data);
 
 #endif

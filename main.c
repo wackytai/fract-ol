@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:44:06 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/04/05 17:05:05 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/04/10 16:28:05 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,20 +20,10 @@ int	handle_no_event(void *data)
 	return (0);
 }
 
-/* int	handle_input(int keysym, t_data *data)
-{
-	if (keysym == XK_Escape)
-		mlx_destroy_window(data->mlx_ptr, data->win_ptr);
-	return (0);
-} */
-
 int	handle_keypress(int keysym, t_data *data)
 {
 	if (keysym == XK_Escape)
-	{
-		mlx_destroy_window(data->mlx_ptr, data->win_ptr);
-		data->win_ptr = NULL;
-	}
+		close_window(data);
 	printf("Keypress %d\n", keysym);
 	return (0);
 }
@@ -66,8 +56,9 @@ int	main(void)
 	mlx_hook(data.win_ptr, KeyPress, KeyPressMask, &handle_keypress, &data);
 	mlx_hook(data.win_ptr, KeyRelease, KeyReleaseMask, &handle_keyrelease,
 		&data);
+	mlx_hook(data.win_ptr, DestroyNotify, StructureNotifyMask, &close_window,
+		&data);
 	mlx_loop(data.mlx_ptr);
-	mlx_destroy_image(data.mlx_ptr, data.img.mlx_img);
-	mlx_destroy_display(data.mlx_ptr);
+	destroy_all(&data);
 	free(data.mlx_ptr);
 }
