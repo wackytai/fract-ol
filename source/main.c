@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:44:06 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/04/12 14:23:14 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/04/12 15:30:55 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	handle_keyrelease(int keysym, void *data)
 	return (0);
 }
 
-int	main(void)
+int	main(int argc, char **argv)
 {
 	t_data	data;
 
@@ -48,7 +48,9 @@ int	main(void)
 	data.img.addr = mlx_get_data_addr(data.img.mlx_img, &data.img.bpp,
 			&data.img.line_len, &data.img.endian);
 	mlx_loop_hook(data.mlx_ptr, &handle_no_event, &data);
-	mlx_loop_hook(data.mlx_ptr, &render, &data);
+	if (argc == 1 && argv)
+		create_menu(&data);
+	//mlx_loop_hook(data.mlx_ptr, &render, &data);
 	mlx_hook(data.win_ptr, KeyRelease, KeyReleaseMask, &handle_keyrelease,
 		&data);
 	mlx_hook(data.win_ptr, DestroyNotify, StructureNotifyMask, &close_window,
