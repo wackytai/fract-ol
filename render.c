@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 15:18:07 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/04/10 17:11:16 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/04/12 11:45:25 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int	render(t_data *data)
 	render_rect(&data->img, (t_rect){x / 9 + x / 9, y * 4, x / 9, y, 0xFFFFFF});
 	render_rect(&data->img, (t_rect){x - x / 3, y * 4, x / 9, y, 0xFFFFFF});
 	render_rect(&data->img, (t_rect){x - (x / 9), y * 4, x / 9, 20, 0xFFFFFF}); */
-	draw_circle(&data->img, (t_rect){x / 2, y / 2, x / 2, y / 2, 0xFF});
+	draw_circle(&data->img, (t_rect){x, y, x / 4, y / 4, 0xFF});
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 		data->img.mlx_img, 0, 0);
 	return (0);
@@ -89,15 +89,30 @@ int	draw_circle(t_img *img, t_rect circle)
 {
 	int	i;
 	int	j;
+	int	radius_2;
+	int	f_x;
+	int	f_y;
 
-	i = 0;
-	j = 0;
 	i = circle.y;
-	while (i <= circle.width + circle.x)
+	j = 0;
+	radius_2 = circle.width * circle.width;
+	while (i < (circle.height * 2) + circle.y)
 	{
+		f_y = circle.y - i;
 		j = circle.x;
-		while (j <= circle.height + circle.y)
-			img_pix_put(img, j++, i, circle.colour);
+		while (j < (circle.width * 2) + circle.x)
+		{
+			f_x = j - circle.x;
+			if ((f_x * f_x) + ((i - circle.y) * (i - circle.y)) <= radius_2)
+				img_pix_put(img, j / 2, i / 2, circle.colour);
+			if (((circle.x - j) * (circle.x - j)) + (f_y * f_y) <= radius_2)
+				img_pix_put(img, (circle.x - j / 2), i / 2, circle.colour);	
+			if ((f_x * f_x) + (f_y * f_y) <= radius_2)
+				img_pix_put(img, j / 2, (circle.y - i / 2), circle.colour);
+			if (((circle.x - j) * (circle.x - j)) + (f_y * f_y) <= radius_2)
+				img_pix_put(img, (circle.x - j / 2), (circle.y - i/ 2), circle.colour);
+			j++;
+		}
 		i++;
 	}
 	return (0);
