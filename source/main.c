@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:44:06 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/04/10 16:28:05 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/04/12 13:07:01 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,14 @@ int	handle_no_event(void *data)
 	return (0);
 }
 
-int	handle_keypress(int keysym, t_data *data)
-{
-	if (keysym == XK_Escape)
-		close_window(data);
-	printf("Keypress %d\n", keysym);
-	return (0);
-}
-
 int	handle_keyrelease(int keysym, void *data)
 {
 	if (data)
-		printf("Keyrelease: %d\n", keysym);
+	{
+		if (keysym == XK_Escape)
+			close_window(data);
+	}
+	printf("Keyrelease: %d\n", keysym);
 	return (0);
 }
 
@@ -53,7 +49,6 @@ int	main(void)
 			&data.img.line_len, &data.img.endian);
 	mlx_loop_hook(data.mlx_ptr, &handle_no_event, &data);
 	mlx_loop_hook(data.mlx_ptr, &render, &data);
-	mlx_hook(data.win_ptr, KeyPress, KeyPressMask, &handle_keypress, &data);
 	mlx_hook(data.win_ptr, KeyRelease, KeyReleaseMask, &handle_keyrelease,
 		&data);
 	mlx_hook(data.win_ptr, DestroyNotify, StructureNotifyMask, &close_window,
