@@ -1,28 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clean.c                                            :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/10 15:53:35 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/04/12 14:22:58 by tlemos-m         ###   ########.fr       */
+/*   Created: 2022/11/03 09:50:10 by tlemos-m          #+#    #+#             */
+/*   Updated: 2022/11/09 11:53:26 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/fractol.h"
-#include "../mlx_linux/mlx.h"
+#include "libft.h"
 
-int	destroy_all(t_data *data)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	mlx_destroy_image(data->mlx_ptr, data->img.mlx_img);
-	mlx_destroy_display(data->mlx_ptr);
-	return (0);
-}
+	char			*str;
+	unsigned int	i;
+	unsigned int	l;
 
-int	close_window(t_data *data)
-{
-	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
-	data->win_ptr = NULL;
-	return (0);
+	i = 0;
+	l = 0;
+	if (!s || !f)
+		return (0);
+	while (s[l] != '\0')
+		l++;
+	str = malloc(l + 1);
+	if (!str)
+		return (0);
+	while (i < l)
+	{
+		str[i] = f(i, s[i]);
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
 }

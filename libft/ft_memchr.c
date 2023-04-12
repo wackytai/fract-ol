@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clean.c                                            :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/10 15:53:35 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/04/12 14:22:58 by tlemos-m         ###   ########.fr       */
+/*   Created: 2022/10/27 09:49:44 by tlemos-m          #+#    #+#             */
+/*   Updated: 2022/11/11 11:09:51 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/fractol.h"
-#include "../mlx_linux/mlx.h"
+#include "libft.h"
 
-int	destroy_all(t_data *data)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	mlx_destroy_image(data->mlx_ptr, data->img.mlx_img);
-	mlx_destroy_display(data->mlx_ptr);
-	return (0);
-}
+	size_t			i;
+	unsigned char	*char_s;
 
-int	close_window(t_data *data)
-{
-	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
-	data->win_ptr = NULL;
-	return (0);
+	i = 0;
+	char_s = (unsigned char *) s;
+	while (i < n)
+	{
+		if (char_s[i] == (unsigned char) c)
+			return (&char_s[i]);
+		i++;
+	}
+	return (NULL);
 }

@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clean.c                                            :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/10 15:53:35 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/04/12 14:22:58 by tlemos-m         ###   ########.fr       */
+/*   Created: 2022/10/27 10:31:09 by tlemos-m          #+#    #+#             */
+/*   Updated: 2022/11/11 10:32:50 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/fractol.h"
-#include "../mlx_linux/mlx.h"
+#include "libft.h"
 
-int	destroy_all(t_data *data)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	mlx_destroy_image(data->mlx_ptr, data->img.mlx_img);
-	mlx_destroy_display(data->mlx_ptr);
-	return (0);
-}
+	unsigned char	*char_s1;
+	unsigned char	*char_s2;
+	size_t			i;
 
-int	close_window(t_data *data)
-{
-	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
-	data->win_ptr = NULL;
+	char_s1 = (unsigned char *) s1;
+	char_s2 = (unsigned char *) s2;
+	i = 0;
+	while (i < n)
+	{
+		if (char_s1[i] != char_s2[i])
+			return (char_s1[i] - char_s2[i]);
+		i++;
+	}
 	return (0);
 }

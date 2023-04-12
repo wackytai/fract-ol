@@ -1,28 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clean.c                                            :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/10 15:53:35 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/04/12 14:22:58 by tlemos-m         ###   ########.fr       */
+/*   Created: 2022/10/27 12:00:45 by tlemos-m          #+#    #+#             */
+/*   Updated: 2022/11/09 11:53:11 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/fractol.h"
-#include "../mlx_linux/mlx.h"
+#include "libft.h"
 
-int	destroy_all(t_data *data)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	mlx_destroy_image(data->mlx_ptr, data->img.mlx_img);
-	mlx_destroy_display(data->mlx_ptr);
-	return (0);
-}
+	char	*str;
+	size_t	i;
+	size_t	l1;
+	size_t	l2;
 
-int	close_window(t_data *data)
-{
-	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
-	data->win_ptr = NULL;
-	return (0);
+	i = 0;
+	l1 = ft_strlen(s1);
+	l2 = ft_strlen(s2);
+	str = malloc(l1 + l2 + 1);
+	if (!str)
+		return (NULL);
+	while (i < (l1 + l2))
+	{
+		if (i < l1)
+			str[i] = s1[i];
+		else
+			str[i] = s2[i - l1];
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
 }

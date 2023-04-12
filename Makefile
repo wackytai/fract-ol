@@ -1,9 +1,11 @@
 NAME = fract-ol
-LIB = fractol.h
+LIB = ./include/fractol.h
+LIBFT_DIR = ./libft
+LIBFT = ./libft/libft.a
 PRINTF_DIR = ./printf
 PRINTF = ./printf/lib_printf.a
 MLX_DIR = ./mlx_linux
-C_SOURCES = main.c render.c clean.c
+C_SOURCES = ./source/main.c ./source/render.c ./source/clean.c
 OBJ = $(C_SOURCES:.c=.o)
 REMOVE = @rm -f
 CC = gcc
@@ -14,19 +16,22 @@ all:		$(NAME)
 
 $(NAME):	$(C_SOURCES)
 			@$(MAKE) --no-print-directory -C $(PRINTF_DIR)
+			@$(MAKE) --no-print-directory -C $(LIBFT_DIR)
 			@$(MAKE) --no-print-directory -C $(MLX_DIR)
-			$(CC) $(CFLAGS) $(^) $(MLX_FLAGS) -o $(@) $(PRINTF) -fsanitize=address
+			$(CC) $(CFLAGS) $(^) $(MLX_FLAGS) -o $(@) $(PRINTF) $(LIBFT) -fsanitize=address
 bonus:
 
 clean:
 			$(REMOVE) *.o
 			@$(MAKE) --no-print-directory -C $(PRINTF_DIR) clean
 			@$(MAKE) --no-print-directory -C $(MLX_DIR) clean
+			@$(MAKE) --no-print-directory -C $(LIBFT_DIR) clean
 
 fclean:		clean
 			$(REMOVE) $(NAME)
 			@$(MAKE) --no-print-directory -C $(PRINTF_DIR) clean
 			@$(MAKE) --no-print-directory -C $(MLX_DIR) clean
+			@$(MAKE) --no-print-directory -C $(LIBFT_DIR) clean
 
 re:			fclean all
 

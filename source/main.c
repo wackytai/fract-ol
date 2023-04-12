@@ -6,12 +6,12 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:44:06 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/04/12 13:07:01 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/04/12 14:23:14 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
-#include "./mlx_linux/mlx.h"
+#include "../include/fractol.h"
+#include "../mlx_linux/mlx.h"
 
 int	handle_no_event(void *data)
 {
