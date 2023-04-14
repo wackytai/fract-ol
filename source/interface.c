@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 15:16:50 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/04/12 15:58:32 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/04/13 11:04:57 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,17 +29,34 @@ void	update_zoom(void)
 
 int	create_menu(t_data *data)
 {
-	render_background(&data->img, 0x808080);
-	mlx_string_put(data->mlx_ptr, data->win_ptr, W_WIDTH / 2,
+	int	offset_x;
+	int	offset_y;
+
+	offset_x = 72;
+	offset_y = 20;
+	render(data);
+	mlx_set_font(data->mlx_ptr, data->win_ptr, "12x24");
+	mlx_string_put(data->mlx_ptr, data->win_ptr, (W_WIDTH / 2) - offset_x,
 		W_HEIGHT / 4, 0xFFFFFF, "Help Center");
-	mlx_string_put(data->mlx_ptr, data->win_ptr, W_WIDTH / 3,
-		(W_HEIGHT / 3) * 2, 0xFFFFFF,
-		"Fractals\nAvailable:");
-	mlx_string_put(data->mlx_ptr, data->win_ptr, (W_WIDTH / 3) * 2,
-		(W_HEIGHT / 3) * 2, 0xFFFFFF, "Mandelbrot\nJulia\nCantor Set");
-	mlx_string_put(data->mlx_ptr, data->win_ptr, W_WIDTH / 3,
-		W_HEIGHT - W_HEIGHT / 4, 0xFFFFFF, "Zoom:\nPan:\nColour Range Shift:");
-	mlx_string_put(data->mlx_ptr, data->win_ptr, (W_WIDTH / 3) * 2,
-		W_HEIGHT - W_HEIGHT / 4, 0xFFFFFF, "Mouse Scroll\nArrows\nMouse Move");
+	mlx_set_font(data->mlx_ptr, data->win_ptr, "10x20");
+	mlx_string_put(data->mlx_ptr, data->win_ptr, (W_WIDTH / 3) - offset_x,
+		W_HEIGHT / 3, 0xFFFFFF,
+		"Fractals Available:");
+	mlx_string_put(data->mlx_ptr, data->win_ptr, ((W_WIDTH / 3) * 2) - offset_x,
+		W_HEIGHT / 3, 0xFFFFFF, "Mandelbrot");
+	mlx_string_put(data->mlx_ptr, data->win_ptr, ((W_WIDTH / 3) * 2) - offset_x,
+		(W_HEIGHT / 3) + offset_y, 0xFFFFFF, "Julia");
+	mlx_string_put(data->mlx_ptr, data->win_ptr, (W_WIDTH / 3 - offset_x),
+		(W_HEIGHT / 3) * 3 / 2, 0xFFFFFF, "Zoom:");
+	mlx_string_put(data->mlx_ptr, data->win_ptr, ((W_WIDTH / 3) * 2) - offset_x,
+		(W_HEIGHT / 3) * 3 / 2, 0xFFFFFF, "Mouse Scroll");
+	mlx_string_put(data->mlx_ptr, data->win_ptr, (W_WIDTH / 3 - offset_x),
+		((W_HEIGHT / 3) * 3 / 2) + (offset_y * 2), 0xFFFFFF, "Pan:");
+	mlx_string_put(data->mlx_ptr, data->win_ptr, ((W_WIDTH / 3) * 2) - offset_x,
+		((W_HEIGHT / 3) * 3 / 2) + (offset_y * 2), 0xFFFFFF, "Arrow Keys");
+	mlx_string_put(data->mlx_ptr, data->win_ptr, (W_WIDTH / 3 - offset_x),
+		((W_HEIGHT / 3) * 3 / 2) + (offset_y * 4), 0xFFFFFF, "Shift Colours:");
+	mlx_string_put(data->mlx_ptr, data->win_ptr, ((W_WIDTH / 3) * 2) - offset_x,
+		((W_HEIGHT / 3) * 3 / 2) + (offset_y * 4), 0xFFFFFF, "Mouse Movement");
 	return (0);
 }
