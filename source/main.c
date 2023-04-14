@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:44:06 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/04/14 14:05:29 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/04/14 15:21:50 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ int	handle_keyrelease(int keysym, void *data)
 
 int	main(int argc, char **argv)
 {
-	t_data	data;
+	t_data		data;
+	t_fractal	fractal;
 
 	if (initialize(&data) > 0)
 	{
@@ -61,6 +62,18 @@ int	main(int argc, char **argv)
 	mlx_hook(data.win_ptr, DestroyNotify, StructureNotifyMask, &close_window,
 		&data);
 	mlx_loop(data.mlx_ptr); */
+	if (argc == 2)
+	{
+		if (ft_strncmp(argv[1]), "Mandelbrot", ft_strlen(argv[1]) == 0)
+		{
+			set_initial_fractal(&fractal, 0);
+			ft_mandelbrot(&data, &fractal);
+		}
+		else if (ft_strncmp(argv[1]), "Julia", ft_strlen(argv[1]) == 0)
+		{
+			set_initial_fractal(&fractal, 1);
+		}
+	}
 	destroy_all(&data);
 	free(data.mlx_ptr);
 }

@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 14:07:25 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/04/14 13:50:27 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/04/14 15:45:48 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # endif
 
 # ifndef W_HEIGHT
-#  define W_HEIGHT 1080
+#  define W_HEIGHT 1920
 # endif
 
 # ifndef MAX_ITER
@@ -62,8 +62,11 @@ typedef struct s_complex
 	double	im;
 }	t_complex;
 
+//are the max and min members really necessary if I'm checking if x^2 + y^2 <= 4?
 typedef struct s_fractal
 {
+	double		x;
+	double		y;
 	t_complex	min;
 	t_complex	max;
 	t_complex	c;
@@ -84,10 +87,16 @@ int		render(t_data *data);
 
 /*fractals.c*/
 int 	ft_mandelbrot(t_data *data, t_fractal *fractal);
+int 	ft_julia_static(t_data *data, t_fractal *fractal);
 
 /*interface.c*/
-void	update_zoom(void);
+void	update_zoom(t_fractal *fractal, int flag);
+void	pan_image(t_data *data, int flag);
 int		create_menu(t_data *data);
+
+/*init.c*/
+int 	initialize(t_data *data);
+void    set_initial_fractal(t_fractal *fractal, int flag);
 
 /*clean.c*/
 int		destroy_all(t_data *data);

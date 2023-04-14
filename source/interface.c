@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 15:16:50 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/04/14 13:54:41 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/04/14 15:44:52 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,38 @@
 //update_zoom must receive the struct which has the zoom variable as a member
 //replace int zoom for the struct member when struct is ready
 //don't forget to make zoom relative to mouse position
-void	update_zoom(void)
+void	update_zoom(t_fractal *fractal, int flag)
 {
-	int	zoom;
+	if (flag > 0)
+		fractal->zoom *= 1.15;
+	else if (flag < 0)
+	{
+		if (fractal->zoom < 1)
+			fractal->zoom = 1;
+		else
+			fractal->zoom *= 0.85;
+	}
+}
 
-	zoom = 0;
-	if (zoom < 1)
-		zoom = 1;
-	else
-		zoom += 1;
+void	pan_image(t_data *data, int flag)
+{
+	if (flag == 0)
+	{
+		//pan 1.15 right
+	}
+	else if (flag == 1)
+	{
+		//pan 1.15 left
+	}
+	else if (flag == 2)
+	{
+		//pan 1.15 up
+	}
+	else if (flag == 3)
+	{
+		//pan 1.15 down
+	}
+	//update screen
 }
 
 int	create_menu(t_data *data)

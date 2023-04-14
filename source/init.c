@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hooks.c                                            :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 13:49:36 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/04/14 14:03:36 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/04/14 15:17:38 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,22 @@ int initialize(t_data *data)
     mlx_hook(data.win_ptr, DestroyNotify, StructureNotifyMask, &close_window, &data);
     mlx_loop(data.mlx_ptr);
     return (0);
+}
+
+void    set_initial_fractal(t_fractal *fractal, int flag)
+{
+        fractal->x = 0;
+        fractal->y = 0;
+        fractal->min.re = -2;
+        fractal->min.im = -2;
+        fractal->max.re = 2;
+        fractal->max.im = 2;
+        fractal->zoom = 1;
+    if (flag == 0)
+    {
+        fractal->c.re =
+        fractal->c.im =
+        fractal->z.re =
+        fractal->z.im =
+    }
 }
