@@ -6,12 +6,11 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 15:18:07 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/04/13 10:45:02 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/04/14 13:50:45 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fractol.h"
-#include "../mlx_linux/mlx.h"
 
 void	img_pix_put(t_img *img, int x, int y, int colour)
 {

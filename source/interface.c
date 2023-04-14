@@ -6,12 +6,11 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 15:16:50 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/04/13 11:04:57 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/04/14 13:54:41 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fractol.h"
-#include "../mlx_linux/mlx.h"
 
 //update_zoom must receive the struct which has the zoom variable as a member
 //replace int zoom for the struct member when struct is ready

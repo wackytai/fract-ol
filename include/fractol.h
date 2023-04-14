@@ -6,15 +6,16 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 14:07:25 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/04/12 15:26:27 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/04/14 13:50:27 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
-# include <stdio.h>
-# include <stdlib.h>
+# include "../mlx_linux/mlx.h"
 # include <X11/keysym.h>
+# include <stdlib.h>
+# include <stdio.h>
 # include <X11/X.h>
 # include <math.h>
 
@@ -55,6 +56,21 @@ typedef struct s_data
 	t_img	img;
 }	t_data;
 
+typedef struct s_complex
+{
+	double	re;
+	double	im;
+}	t_complex;
+
+typedef struct s_fractal
+{
+	t_complex	min;
+	t_complex	max;
+	t_complex	c;
+	t_complex	z;
+	int		zoom;
+}	t_fractal;
+
 /*main.c*/
 int		main(int argc, char **argv);
 int		handle_no_event(void *data);
@@ -65,6 +81,9 @@ void	img_pix_put(t_img *img, int x, int y, int colour);
 int		render_rect(t_img *img, t_rect rect);
 void	render_background(t_img *img, int colour);
 int		render(t_data *data);
+
+/*fractals.c*/
+int 	ft_mandelbrot(t_data *data, t_fractal *fractal);
 
 /*interface.c*/
 void	update_zoom(void);

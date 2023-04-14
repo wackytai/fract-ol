@@ -5,7 +5,7 @@ LIBFT = ./libft/libft.a
 PRINTF_DIR = ./printf
 PRINTF = ./printf/lib_printf.a
 MLX_DIR = ./mlx_linux
-C_SOURCES = ./source/main.c ./source/render.c ./source/clean.c ./source/interface.c
+C_SOURCES = ./source/main.c ./source/render.c ./source/clean.c ./source/interface.c ./source/fractals.c ./source/hooks.c
 OBJ = $(C_SOURCES:.c=.o)
 REMOVE = @rm -f
 CC = gcc
