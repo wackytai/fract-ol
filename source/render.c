@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 15:18:07 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/04/14 13:50:45 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/04/17 14:37:23 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,16 @@ void	render_background(t_img *img, int colour)
 	}
 }
 
+int	fill_image(t_data *data)
+{
+	render_background(&data->img, 0xFFFFFF);
+	render_rect(&data->img, (t_rect){25, 25, (W_WIDTH - 50), (W_HEIGHT - 50),
+		0x000000});
+	return (0);
+}
+
 int	render(t_data *data)
 {
-	if (data->win_ptr == NULL)
-		return (1);
-	render_background(&data->img, 0xFFFFFF);
-	render_rect(&data->img, (t_rect){25, 25, (W_WIDTH - 50), (W_HEIGHT - 50), 0x000000});
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 		data->img.mlx_img, 0, 0);
 	return (0);
