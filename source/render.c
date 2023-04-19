@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 15:18:07 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/04/17 14:37:23 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/04/19 15:29:46 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	img_pix_put(t_img *img, int x, int y, int colour)
 			*pixel++ = (colour >> (img->bpp - 8 - i)) & 0xFF;
 		i -= 8;
 	}
+	printf("colour: %i\n", colour);
 }
 
 int	render_rect(t_img *img, t_rect rect)

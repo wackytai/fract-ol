@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 14:07:25 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/04/17 16:58:05 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/04/19 15:56:53 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,21 +20,14 @@
 # include <X11/X.h>
 # include <math.h>
 
-# ifndef W_WIDTH
-#  define W_WIDTH 1920
-# endif
-
-# ifndef W_HEIGHT
-#  define W_HEIGHT 1080
-# endif
-
-# ifndef MAX_ITER
-#  define MAX_ITER 15
-# endif
+# define W_WIDTH 1920
+# define W_HEIGHT 1080
+# define MAX_ITER 20
 
 typedef struct s_img
 {
 	void	*mlx_img;
+	//int		**img_map;
 	char	*addr;
 	int		bpp;
 	int		line_len;
@@ -59,21 +52,22 @@ typedef struct s_data
 
 typedef struct s_complex
 {
-	double	re;
-	double	im;
+	double	x;
+	double	y;
 }	t_complex;
 
-//are the max and min members really necessary if I'm already checking x^2 + y^2 <= 4?
 typedef struct s_fractal
 {
-	double		x;
-	double		y;
+	t_complex	pixel;
+	t_complex	f_center;
+	t_complex	offset;
 	t_complex	min;
 	t_complex	max;
 	t_complex	c;
 	t_complex	z;
 	int			zoom;
 	int			flag;
+	int			colour;
 }	t_fractal;
 
 /*main.c*/
@@ -81,7 +75,7 @@ int			main(int argc, char **argv);
 int			handle_no_event(void *data);
 int			handle_keyrelease(int keysym, void *data);
 int			handle_keypress(int keysym, t_data *data);
-int			handle_mouse_input(int button, t_data *data);
+int			handle_mouse_input(int button, int x, int y, t_data *data);
 
 /*render.c*/
 void		img_pix_put(t_img *img, int x, int y, int colour);
@@ -95,8 +89,8 @@ int			ft_mandelbrot(t_data *data, t_fractal *fractal);
 int			ft_julia_static(t_data *data, t_fractal *fractal);
 
 /*interface.c*/
-void		update_zoom(t_fractal *fractal, int flag);
-void		pan_image(t_data *data, int flag);
+void		update_zoom(t_fractal *fractal, int flag, int x, int y);
+void		pan_image(t_data *data, int flag, int x, int y);
 int			create_body_commands(t_data *data, int offset_x, int offset_y);
 int			create_menu(t_data *data);
 int			render_menu(t_data *data);
@@ -104,6 +98,7 @@ int			render_menu(t_data *data);
 /*init.c*/
 int			initialize(int argc, char **argv, t_data *data, t_fractal *fractal);
 void		check_input(char **argv, t_data *data, t_fractal *fractal);
+void		set_struct(t_fractal *fractal);
 
 /*clean.c*/
 int			destroy_all(t_data *data);

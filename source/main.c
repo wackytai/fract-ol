@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:44:06 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/04/17 16:52:21 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/04/19 14:17:38 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	handle_keypress(int keysym, t_data *data)
 	return (0);
 }
 
-int	handle_mouse_input(int button, t_data *data)
+int	handle_mouse_input(int button, int x, int y, t_data *data)
 {
 	if (data)
 	{
@@ -56,7 +56,10 @@ int	handle_mouse_input(int button, t_data *data)
 		if (button == 1)
 			printf("Left Click\n");
 		if (button == 3)
+		{
 			printf("Right Click\n");
+			printf("x: %i, y: %i\n", x, y);
+		}
 	}
 	return (0);
 }
