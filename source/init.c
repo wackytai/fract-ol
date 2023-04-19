@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 13:49:36 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/04/19 15:56:45 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/04/19 16:02:36 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,7 @@ int	initialize(int argc, char **argv, t_data *data, t_fractal *fractal)
 		check_input(argv, data, fractal);
 		set_struct(fractal);
 		if (fractal->flag == 1)
-		{
 			ft_mandelbrot(data, fractal);
-		}
 	}
 	return (0);
 }
