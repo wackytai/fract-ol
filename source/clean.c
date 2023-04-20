@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 15:53:35 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/04/19 15:57:03 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/04/20 11:26:50 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 
 int	destroy_all(t_data *data)
 {
-	int	x;
-
-	x = -1;
 	mlx_destroy_image(data->mlx_ptr, data->img.mlx_img);
 	mlx_destroy_display(data->mlx_ptr);
 	/* while (data->img.img_map[++x])

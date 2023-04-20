@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 14:07:25 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/04/19 15:56:53 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/04/20 13:11:54 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,11 @@
 
 # define W_WIDTH 1920
 # define W_HEIGHT 1080
-# define MAX_ITER 20
+# define MAX_ITER 100
 
 typedef struct s_img
 {
 	void	*mlx_img;
-	//int		**img_map;
 	char	*addr;
 	int		bpp;
 	int		line_len;
@@ -87,6 +86,9 @@ int			render(t_data *data);
 /*fractals.c*/
 int			ft_mandelbrot(t_data *data, t_fractal *fractal);
 int			ft_julia_static(t_data *data, t_fractal *fractal);
+
+/*fractals_utils.c*/
+void		iterate_complex(t_data *data, t_fractal *f);
 
 /*interface.c*/
 void		update_zoom(t_fractal *fractal, int flag, int x, int y);

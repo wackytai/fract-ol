@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 13:49:36 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/04/19 16:02:36 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/04/20 12:59:30 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,6 @@ void	check_input(char **argv, t_data *data, t_fractal *fractal);
 
 int	initialize(int argc, char **argv, t_data *data, t_fractal *fractal)
 {
-	int	x;
-
-	x = -1;
 	if (argc >= 1)
 	{
 		data->img.mlx_img = mlx_new_image(data->mlx_ptr, W_WIDTH, W_HEIGHT);
@@ -67,8 +64,8 @@ void	set_struct(t_fractal *fractal)
 {
 	fractal->pixel.x = 0;
 	fractal->pixel.y = 0;
-	fractal->f_center.x = W_WIDTH / 2;
-	fractal->f_center.y = W_HEIGHT / 2;
+	fractal->f_center.x = -0.75;
+	fractal->f_center.y = -1;
 	fractal->max.x = 2;
 	fractal->max.y = 2;
 	fractal->min.x = -1.5;
