@@ -6,9 +6,23 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 16:59:57 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/04/17 17:06:14 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/04/20 14:32:24 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fractol.h"
 
+int	get_colour(t_data *data, t_fractal *f, int iter)
+{
+	int	colour_1;
+	int	colour_2;
+
+	colour_1 = 0x00807F;
+	colour_2 = 0xCC4D01;
+	if (iter < MAX_ITER)
+		f->colour = colour_1;
+	else
+		f->colour = colour_2;
+	img_pix_put(&data->img, f->pixel.x, f->pixel.y, f->colour);
+	return (0);
+}
