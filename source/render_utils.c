@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 13:52:14 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/04/20 14:24:11 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/04/20 15:17:56 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,26 @@
 //replace int zoom for the struct member when struct is ready
 //don't forget to make zoom relative to mouse position
 //update screen after panning image!
-void	update_zoom(t_fractal *fractal, int flag, int x, int y)
+void	update_zoom(t_data *data, int x, int y)
 {
-	if (flag > 0)
-		fractal->zoom *= 1.15;
-	else if (flag < 0)
+	if (x || y)
 	{
-		if (fractal->zoom < 1)
-			fractal->zoom = 1;
-		else
-			fractal->zoom *= 0.85;
+		if (data->f.z_flag > 0)
+		{
+			data->f.zoom *= 1.15;
+		}
+		else if (data->f.z_flag < 0)
+		{
+			if (data->f.zoom <= 1)
+				data->f.zoom = 1;
+			else
+				data->f.zoom *= 0.85;
+		}
 	}
+	printf("zoom: %f\n", data->f.zoom);
 }
 
-void	pan_image(t_data *data, int flag, int x, int y)
+/* void	pan_image(t_data *data, int x, int y)
 {
 	if (flag == 0 && data)
 		printf("Pan 1.15 right\n");
@@ -40,4 +46,4 @@ void	pan_image(t_data *data, int flag, int x, int y)
 	else if (flag == 3)
 		printf("Pan 1.15 down\n");
 	return ;
-}
+} */

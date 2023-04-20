@@ -6,7 +6,7 @@ PRINTF_DIR = ./printf
 PRINTF = ./printf/lib_printf.a
 MLX_DIR = ./mlx_linux
 C_SOURCES = ./source/main.c ./source/render.c ./source/clean.c ./source/interface.c ./source/fractals.c \
-			./source/init.c ./source/fractals_utils.c ./source/colours.c
+			./source/init.c ./source/fractals_utils.c ./source/colours.c ./source/render_utils.c
 OBJ = $(C_SOURCES:.c=.o)
 REMOVE = @rm -f
 CC = gcc

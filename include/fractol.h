@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 14:07:25 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/04/20 14:50:56 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/04/20 15:06:16 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ typedef struct s_fractal
 	t_complex	max;
 	t_complex	c;
 	t_complex	z;
-	int			zoom;
+	double		zoom;
 	int			z_flag;
 	int			f_flag;
 	int			colour;
@@ -92,9 +92,11 @@ int			ft_julia_static(t_data *data, t_fractal *fractal);
 /*fractals_utils.c*/
 void		iterate_complex(t_data *data, t_fractal *f);
 
+/*render_utils.c*/
+void		update_zoom(t_data *data, int x, int y);
+void		pan_image(t_data *data, int x, int y);
+
 /*interface.c*/
-void		update_zoom(t_fractal *fractal, int flag, int x, int y);
-void		pan_image(t_data *data, int flag, int x, int y);
 int			create_body_commands(t_data *data, int offset_x, int offset_y);
 int			create_menu(t_data *data);
 int			render_menu(t_data *data);
