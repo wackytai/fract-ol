@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 15:16:50 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/04/20 13:52:36 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/04/21 14:37:40 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	create_menu(t_data *data)
 	mlx_string_put(data->mlx_ptr, data->win_ptr, ((W_WIDTH / 3) * 2) - offset_x,
 		W_HEIGHT / 3, 0xFFFFFF, "Mandelbrot");
 	mlx_string_put(data->mlx_ptr, data->win_ptr, ((W_WIDTH / 3) * 2) - offset_x,
-		(W_HEIGHT / 3) + offset_y, 0xFFFFFF, "Julia");
+		(W_HEIGHT / 3) + (2 * offset_y), 0xFFFFFF, "Julia");
 	create_body_commands(data, offset_x, offset_y);
 	return (0);
 }
