@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 14:07:25 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/04/21 14:08:35 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/04/21 14:40:35 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,7 @@ void		set_struct(t_fractal *fractal);
 /*clean.c*/
 int			destroy_all(t_data *data);
 int			close_window(t_data *data);
+int			update_screen(t_data *data);
 
 /*colours.c*/
 int			get_colour(t_data *data, t_fractal *fractal, int iter);

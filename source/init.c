@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 13:49:36 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/04/21 13:57:50 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/04/21 14:41:58 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	check_input(char **argv, t_data *data, t_fractal *fractal)
 	else if (ft_strncmp(argv[1], "Julia", ft_strlen(argv[1])) == 0)
 	{
 		fractal->f_flag = 2;
-		printf("Fixed Julia set selected %i\n", fractal->f_flag);
+		printf("Static Julia set selected %i\n", fractal->f_flag);
 	}
 	else
 	{
