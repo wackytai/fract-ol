@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 13:52:14 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/04/20 15:17:56 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/04/21 11:15:15 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 //replace int zoom for the struct member when struct is ready
 //don't forget to make zoom relative to mouse position
 //update screen after panning image!
-void	update_zoom(t_data *data, int x, int y)
+/* void	update_zoom(t_data *data, int x, int y)
 {
 	if (x || y)
 	{
@@ -33,7 +33,7 @@ void	update_zoom(t_data *data, int x, int y)
 		}
 	}
 	printf("zoom: %f\n", data->f.zoom);
-}
+} */
 
 /* void	pan_image(t_data *data, int x, int y)
 {

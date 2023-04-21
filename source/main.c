@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:44:06 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/04/20 15:17:41 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/04/21 11:17:07 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,23 +49,25 @@ int	handle_mouse_input(int button, int x, int y, t_data *data)
 {
 	if (data)
 	{
-		if (button == 4)
+		if (button == 4 && x && y)
 		{
-			data->f.z_flag = -1;
-			update_zoom(data, x, y);
+			//data->f.z_flag = -1;
+			//update_zoom(data, x, y);
+			printf("zoom in\n");
 		}
 		if (button == 5)
 		{
-			data->f.z_flag = 1;
-			update_zoom(data, x, y);
+			//data->f.z_flag = 1;
+			//update_zoom(data, x, y);
+			printf("zoom out\n");
 		}
 		if (button == 1)
 		{
-			data->f.z_flag = 2;
+			//data->f.z_flag = 2;
 		}
 		if (button == 3)
 		{
-			data->f.z_flag = -2;
+			//data->f.z_flag = -2;
 		}
 	}
 	return (0);
