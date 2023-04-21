@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 13:49:36 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/04/21 11:54:10 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/04/21 13:57:50 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	initialize(int argc, char **argv, t_data *data, t_fractal *fractal)
 		data->img.mlx_img = mlx_new_image(data->mlx_ptr, W_WIDTH, W_HEIGHT);
 		data->img.addr = mlx_get_data_addr(data->img.mlx_img, &data->img.bpp,
 				&data->img.line_len, &data->img.endian);
-		//data->f = *fractal;
+		data->f = *fractal;
 	}
 	if (argc == 1)
 	{

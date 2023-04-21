@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 13:52:14 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/04/21 11:15:15 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/04/21 14:11:31 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 //replace int zoom for the struct member when struct is ready
 //don't forget to make zoom relative to mouse position
 //update screen after panning image!
-/* void	update_zoom(t_data *data, int x, int y)
+void	update_zoom(t_data *data, int x, int y)
 {
 	if (x || y)
 	{
@@ -33,17 +33,17 @@
 		}
 	}
 	printf("zoom: %f\n", data->f.zoom);
-} */
+}
 
-/* void	pan_image(t_data *data, int x, int y)
+void	pan_image(t_fractal *fractal, int flag)
 {
-	if (flag == 0 && data)
-		printf("Pan 1.15 right\n");
-	else if (flag == 1)
-		printf("Pan 1.15 left\n");
+	if (flag == 1)
+		fractal->offset.x += 1.15;
+	else if (flag == -1)
+		fractal->offset.x -= 1.15;
 	else if (flag == 2)
-		printf("Pan 1.15 up\n");
-	else if (flag == 3)
-		printf("Pan 1.15 down\n");
+		fractal->offset.y += 1.15;
+	else if (flag == -2)
+		fractal->offset.y -= 1.15;
 	return ;
-} */
+}

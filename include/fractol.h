@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 14:07:25 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/04/21 11:55:43 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/04/21 14:08:35 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,6 @@ typedef struct s_complex
 	double	y;
 }	t_complex;
 
-typedef struct s_data
-{
-	void		*mlx_ptr;
-	void		*win_ptr;
-	t_img		img;
-}	t_data;
-
 typedef struct s_fractal
 {
 	t_complex	pixel;
@@ -69,6 +62,14 @@ typedef struct s_fractal
 	int			f_flag;
 	int			colour;
 }	t_fractal;
+
+typedef struct s_data
+{
+	void		*mlx_ptr;
+	void		*win_ptr;
+	t_img		img;
+	t_fractal	f;
+}	t_data;
 
 /*main.c*/
 int			main(int argc, char **argv);
@@ -92,8 +93,8 @@ int			ft_julia_static(t_data *data, t_fractal *fractal);
 void		iterate_complex(t_data *data, t_fractal *f);
 
 /*render_utils.c*/
-/* void		update_zoom(t_data *data, int x, int y);
-void		pan_image(t_data *data, int x, int y); */
+void		update_zoom(t_data *data, int x, int y);
+void		pan_image(t_fractal *fractal, int flag);
 
 /*interface.c*/
 int			create_body_commands(t_data *data, int offset_x, int offset_y);

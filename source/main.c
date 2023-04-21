@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:44:06 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/04/21 11:17:07 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/04/21 14:11:56 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,17 +31,14 @@ int	handle_keyrelease(int keysym, void *data)
 
 int	handle_keypress(int keysym, t_data *data)
 {
-	if (data)
-	{
-		if (keysym == XK_Left)
-			printf("Keypress: Left Arrow\n");
-		if (keysym == XK_Right)
-			printf("Keypress: Right Arrow\n");
-		if (keysym == XK_Up)
-			printf("Keypress: Up Arrow\n");
-		if (keysym == XK_Down)
-			printf("Keypress: Down Arrow\n");
-	}
+	if (keysym == XK_Left)
+		pan_image(&data->f, -1);
+	if (keysym == XK_Right)
+		pan_image(&data->f, 1);
+	if (keysym == XK_Up)
+		pan_image(&data->f, 2);
+	if (keysym == XK_Down)
+		pan_image(&data->f, -2);
 	return (0);
 }
 
@@ -51,23 +48,21 @@ int	handle_mouse_input(int button, int x, int y, t_data *data)
 	{
 		if (button == 4 && x && y)
 		{
-			//data->f.z_flag = -1;
-			//update_zoom(data, x, y);
-			printf("zoom in\n");
+			data->f.z_flag = -1;
+			update_zoom(data, x, y);
 		}
 		if (button == 5)
 		{
-			//data->f.z_flag = 1;
-			//update_zoom(data, x, y);
-			printf("zoom out\n");
+			data->f.z_flag = 1;
+			update_zoom(data, x, y);
 		}
 		if (button == 1)
 		{
-			//data->f.z_flag = 2;
+			data->f.z_flag = 2;
 		}
 		if (button == 3)
 		{
-			//data->f.z_flag = -2;
+			data->f.z_flag = -2;
 		}
 	}
 	return (0);
