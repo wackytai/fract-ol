@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 13:52:14 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/04/21 14:11:31 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/04/21 15:30:58 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	update_zoom(t_data *data, int x, int y)
 		}
 		else if (data->f.z_flag < 0)
 		{
-			if (data->f.zoom <= 1)
+			if (data->f.zoom <= 1 || data->f.zoom * 0.85 < 1)
 				data->f.zoom = 1;
 			else
 				data->f.zoom *= 0.85;

@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 13:49:36 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/04/21 14:41:58 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/04/21 15:43:03 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	initialize(int argc, char **argv, t_data *data, t_fractal *fractal)
 		data->img.addr = mlx_get_data_addr(data->img.mlx_img, &data->img.bpp,
 				&data->img.line_len, &data->img.endian);
 		data->f = *fractal;
+		fractal->zoom = 1;
 	}
 	if (argc == 1)
 	{
@@ -74,7 +75,6 @@ void	set_struct(t_fractal *fractal)
 	fractal->c.y = 0;
 	fractal->offset.x = 0;
 	fractal->offset.y = 0;
-	fractal->zoom = 1;
 	fractal->colour = 0xFFFFFF;
 	return ;
 }

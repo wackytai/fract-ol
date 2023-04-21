@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:44:06 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/04/21 14:11:56 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/04/21 15:33:41 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,26 +44,27 @@ int	handle_keypress(int keysym, t_data *data)
 
 int	handle_mouse_input(int button, int x, int y, t_data *data)
 {
-	if (data)
+	if (data->f.zoom == 0)
+		data->f.zoom = 1;
+	printf("zoom: %f\n", data->f.zoom);
+	if (button == 4)
 	{
-		if (button == 4 && x && y)
-		{
-			data->f.z_flag = -1;
-			update_zoom(data, x, y);
-		}
-		if (button == 5)
-		{
-			data->f.z_flag = 1;
-			update_zoom(data, x, y);
-		}
-		if (button == 1)
-		{
-			data->f.z_flag = 2;
-		}
-		if (button == 3)
-		{
-			data->f.z_flag = -2;
-		}
+		data->f.z_flag = 1;
+		update_zoom(data, x, y);
+		update_screen(data);
+	}
+	if (button == 5)
+	{
+		data->f.z_flag = -1;
+		update_zoom(data, x, y);
+	}
+	if (button == 1 && (x || y))
+	{
+		data->f.z_flag = 2;
+	}
+	if (button == 3)
+	{
+		data->f.z_flag = -2;
 	}
 	return (0);
 }

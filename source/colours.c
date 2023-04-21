@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 16:59:57 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/04/21 14:33:48 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/04/21 15:45:27 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	get_colour(t_data *data, t_fractal *f, int iter)
 
 	colour_1 = 0x00807F;
 	colour_2 = 0xCC4D01;
-	if (iter < MAX_ITER - 1)
+	if (iter < MAX_ITER)
 	{
 		r = (int)((colour_2 >> 16 & 0xFF) + ((float)iter / (float)MAX_ITER)
 				* ((colour_1 >> 16 & 0xFF) - (colour_2 >> 16 & 0xFF)));
