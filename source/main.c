@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:44:06 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/04/24 14:48:25 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/04/24 15:18:29 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,18 @@ int	handle_mouse_input(int button, int x, int y, t_data *data)
 		data->f.z_flag = 1;
 		update_zoom(data, x, y);
 	}
-	if (button == 1 && (x || y))
+	if (button == 1)
 	{
-		data->f.z_flag = 2;
+		data->f.c_palette += 1;
+		if (data->f.c_palette > 4)
+			data->f.c_palette = 0;
 	}
 	if (button == 3)
 	{
-		data->f.z_flag = -2;
+		data->f.c_palette -= 1;
+		if (data->f.c_palette < 0)
+			data->f.c_palette = 4;
+		printf("RC colours : %i\n", data->f.c_palette);
 	}
 	return (0);
 }

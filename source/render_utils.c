@@ -6,16 +6,13 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 13:52:14 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/04/24 14:46:38 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/04/24 14:51:31 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fractol.h"
 
-//update_zoom must receive the struct which has the zoom variable as a member
-//replace int zoom for the struct member when struct is ready
 //don't forget to make zoom relative to mouse position
-//update screen after panning image!
 void	update_zoom(t_data *data, int x, int y)
 {
 	if (x <= W_WIDTH && y <= W_HEIGHT)

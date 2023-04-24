@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 13:49:36 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/04/24 14:08:58 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/04/24 14:57:11 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,6 @@ void	set_struct(t_fractal *fractal)
 	fractal->c.x = 0;
 	fractal->c.y = 0;
 	fractal->colour = 0xFFFFFF;
+	fractal->c_palette = 0;
 	return ;
 }
