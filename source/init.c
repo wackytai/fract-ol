@@ -6,13 +6,14 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 13:49:36 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/04/24 15:26:03 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/04/24 16:08:48 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fractol.h"
 
 void	check_input(char **argv, t_data *data, t_fractal *fractal);
+void	choose_fractal(t_data *data, t_fractal *fractal);
 
 int	initialize(int argc, char **argv, t_data *data, t_fractal *fractal)
 {
@@ -33,12 +34,7 @@ int	initialize(int argc, char **argv, t_data *data, t_fractal *fractal)
 		render_menu(data);
 	}
 	else if (argc == 2)
-	{
 		check_input(argv, data, fractal);
-		set_struct(fractal);
-		if (fractal->f_flag == 1)
-			ft_mandelbrot(data, fractal);
-	}
 	return (0);
 }
 
@@ -46,13 +42,15 @@ void	check_input(char **argv, t_data *data, t_fractal *fractal)
 {
 	if (ft_strncmp(argv[1], "Mandelbrot", ft_strlen(argv[1])) == 0)
 	{
-		fractal->f_flag = 1;
 		printf("Mandelbrot set selected %i\n", fractal->f_flag);
+		fractal->f_flag = 1;
+		choose_fractal(data, fractal);
 	}
 	else if (ft_strncmp(argv[1], "Julia", ft_strlen(argv[1])) == 0)
 	{
-		fractal->f_flag = 2;
 		printf("Static Julia set selected %i\n", fractal->f_flag);
+		fractal->f_flag = 2;
+		choose_fractal(data, fractal);
 	}
 	else
 	{
@@ -77,5 +75,21 @@ void	set_struct(t_fractal *fractal)
 	fractal->c.x = 0;
 	fractal->c.y = 0;
 	fractal->colour = 0xFFFFFF;
+	return ;
+}
+
+void	choose_fractal(t_data *data, t_fractal *fractal)
+{
+	set_struct(fractal);
+	if (fractal->f_flag == 1)
+	{
+		set_mdb_range(fractal);
+		ft_mandelbrot(data, fractal);
+	}
+	else if (fractal->f_flag == 2)
+	{
+		set_julia_range(fractal);
+		ft_julia_static(data, fractal);
+	}
 	return ;
 }

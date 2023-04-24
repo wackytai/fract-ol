@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 14:07:25 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/04/24 15:36:42 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/04/24 16:05:03 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,8 @@ int			ft_julia_static(t_data *data, t_fractal *fractal);
 
 /*fractals_utils.c*/
 void		iterate_complex(t_data *data, t_fractal *f);
+void		set_mdb_range(t_fractal *fractal);
+void		set_julia_range(t_fractal *fractal);
 
 /*render_utils.c*/
 void		update_zoom(t_data *data, int x, int y);
@@ -106,6 +108,7 @@ int			render_menu(t_data *data);
 int			initialize(int argc, char **argv, t_data *data, t_fractal *fractal);
 void		check_input(char **argv, t_data *data, t_fractal *fractal);
 void		set_struct(t_fractal *fractal);
+void		choose_fractal(t_data *data, t_fractal *fractal);
 
 /*clean.c*/
 int			destroy_all(t_data *data);
