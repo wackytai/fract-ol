@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 14:07:25 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/04/24 14:16:45 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/04/24 14:48:34 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # include <X11/X.h>
 # include <math.h>
 
-# define W_WIDTH 1920
-# define W_HEIGHT 1080
+# define W_WIDTH 1290
+# define W_HEIGHT 720
 # define MAX_ITER 50
 
 typedef struct s_img
