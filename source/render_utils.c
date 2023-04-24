@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 13:52:14 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/04/24 10:57:00 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/04/24 14:15:21 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,13 @@ void	update_zoom(t_data *data, int x, int y)
 void	pan_image(t_data *data, int flag)
 {
 	if (flag == 1)
-		data->f.offset.x += 1.15;
+		data->f.offset.x += 0.5 * data->f.zoom;
 	else if (flag == -1)
-		data->f.offset.x -= 1.15;
+		data->f.offset.x -= 0.5 * data->f.zoom;
 	else if (flag == 2)
-		data->f.offset.y += 1.15;
+		data->f.offset.y -= 0.5 * data->f.zoom;
 	else if (flag == -2)
-		data->f.offset.y -= 1.15;
+		data->f.offset.y += 0.5 * data->f.zoom;
 	update_screen(data);
 	return ;
 }

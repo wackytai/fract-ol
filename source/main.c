@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:44:06 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/04/24 10:56:56 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/04/24 14:19:47 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,25 +32,13 @@ int	handle_keyrelease(int keysym, void *data)
 int	handle_keypress(int keysym, t_data *data)
 {
 	if (keysym == XK_Left)
-	{
 		pan_image(data, -1);
-		printf("pan left\n");
-	}
 	if (keysym == XK_Right)
-	{
 		pan_image(data, 1);
-		printf("pan right\n");
-	}
 	if (keysym == XK_Up)
-	{
 		pan_image(data, 2);
-		printf("pan up\n");
-	}
 	if (keysym == XK_Down)
-	{
 		pan_image(data, -2);
-		printf("pan down\n");
-	}
 	return (0);
 }
 

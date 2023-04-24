@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 13:45:35 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/04/21 11:33:35 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/04/24 14:16:30 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,11 @@ int	ft_mandelbrot(t_data *data, t_fractal *fractal)
 		while (fractal->pixel.y < W_HEIGHT)
 		{
 			fractal->c.x = fractal->min.x + (fractal->pixel.x / (double)W_WIDTH)
-				* (fractal->max.x - fractal->min.x) + fractal->f_center.x;
+				* (fractal->max.x - fractal->min.x) + fractal->f_center.x
+				+ fractal->offset.x;
 			fractal->c.y = fractal->min.y + (fractal->pixel.y
 					/ (double)W_HEIGHT) * (fractal->max.y - fractal->min.y)
-				+ fractal->f_center.y;
+				+ fractal->f_center.y + fractal->offset.y;
 			fractal->z.x = 0;
 			fractal->z.y = 0;
 			iterate_complex(data, fractal);

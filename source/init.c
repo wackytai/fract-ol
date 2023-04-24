@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 13:49:36 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/04/24 10:55:15 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/04/24 14:08:58 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ int	initialize(int argc, char **argv, t_data *data, t_fractal *fractal)
 				&data->img.line_len, &data->img.endian);
 		data->f = *fractal;
 		fractal->zoom = 1;
+		fractal->offset.x = 0;
+		fractal->offset.y = 0;
 	}
 	if (argc == 1)
 	{
@@ -63,8 +65,6 @@ void	set_struct(t_fractal *fractal)
 {
 	fractal->pixel.x = 0;
 	fractal->pixel.y = 0;
-	fractal->offset.x = 0;
-	fractal->offset.y = 0;
 	fractal->f_center.x = -0.75 * fractal->zoom;
 	fractal->f_center.y = -1 * fractal->zoom;
 	fractal->max.x = 2 * fractal->zoom;
