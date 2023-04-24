@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 13:49:36 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/04/21 15:43:03 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/04/24 10:55:15 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,18 +63,18 @@ void	set_struct(t_fractal *fractal)
 {
 	fractal->pixel.x = 0;
 	fractal->pixel.y = 0;
-	fractal->f_center.x = -0.75;
-	fractal->f_center.y = -1;
-	fractal->max.x = 2;
-	fractal->max.y = 2;
-	fractal->min.x = -1.5;
-	fractal->min.y = 0;
+	fractal->offset.x = 0;
+	fractal->offset.y = 0;
+	fractal->f_center.x = -0.75 * fractal->zoom;
+	fractal->f_center.y = -1 * fractal->zoom;
+	fractal->max.x = 2 * fractal->zoom;
+	fractal->max.y = 2 * fractal->zoom;
+	fractal->min.x = -1.5 * fractal->zoom;
+	fractal->min.y = 0 * fractal->zoom;
 	fractal->z.x = 0;
 	fractal->z.y = 0;
 	fractal->c.x = 0;
 	fractal->c.y = 0;
-	fractal->offset.x = 0;
-	fractal->offset.y = 0;
 	fractal->colour = 0xFFFFFF;
 	return ;
 }

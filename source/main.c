@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:44:06 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/04/21 15:33:41 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/04/24 10:56:56 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,25 @@ int	handle_keyrelease(int keysym, void *data)
 int	handle_keypress(int keysym, t_data *data)
 {
 	if (keysym == XK_Left)
-		pan_image(&data->f, -1);
+	{
+		pan_image(data, -1);
+		printf("pan left\n");
+	}
 	if (keysym == XK_Right)
-		pan_image(&data->f, 1);
+	{
+		pan_image(data, 1);
+		printf("pan right\n");
+	}
 	if (keysym == XK_Up)
-		pan_image(&data->f, 2);
+	{
+		pan_image(data, 2);
+		printf("pan up\n");
+	}
 	if (keysym == XK_Down)
-		pan_image(&data->f, -2);
+	{
+		pan_image(data, -2);
+		printf("pan down\n");
+	}
 	return (0);
 }
 
@@ -46,16 +58,14 @@ int	handle_mouse_input(int button, int x, int y, t_data *data)
 {
 	if (data->f.zoom == 0)
 		data->f.zoom = 1;
-	printf("zoom: %f\n", data->f.zoom);
 	if (button == 4)
 	{
-		data->f.z_flag = 1;
+		data->f.z_flag = -1;
 		update_zoom(data, x, y);
-		update_screen(data);
 	}
 	if (button == 5)
 	{
-		data->f.z_flag = -1;
+		data->f.z_flag = 1;
 		update_zoom(data, x, y);
 	}
 	if (button == 1 && (x || y))

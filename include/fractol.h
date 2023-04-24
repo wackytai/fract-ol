@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 14:07:25 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/04/21 14:40:35 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/04/24 10:48:20 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 # define W_WIDTH 1920
 # define W_HEIGHT 1080
-# define MAX_ITER 100
+# define MAX_ITER 50
 
 typedef struct s_img
 {
@@ -94,7 +94,7 @@ void		iterate_complex(t_data *data, t_fractal *f);
 
 /*render_utils.c*/
 void		update_zoom(t_data *data, int x, int y);
-void		pan_image(t_fractal *fractal, int flag);
+void		pan_image(t_data *data, int flag);
 
 /*interface.c*/
 int			create_body_commands(t_data *data, int offset_x, int offset_y);

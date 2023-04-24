@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 15:53:35 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/04/21 15:17:02 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/04/24 10:53:36 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,10 @@ int	close_window(t_data *data)
 int	update_screen(t_data *data)
 {
 	mlx_clear_window(data->mlx_ptr, data->win_ptr);
+	set_struct(&data->f);
+	ft_mandelbrot(data, &data->f);
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img.mlx_img,
 		0, 0);
-	printf("screen updated\n");
+	//printf("screen updated\n");
 	return (0);
 }
