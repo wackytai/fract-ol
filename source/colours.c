@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 16:59:57 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/04/24 15:31:54 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/04/24 15:37:47 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,33 +20,10 @@ int	get_colour(t_data *data, t_fractal *f, int iter)
 	int	g;
 	int	b;
 
-	colour_1 = 0xFFE863;
-	colour_2 = 0x47297B;
-	if (f->c_palette == 0)
-	{
-		colour_1 = 0xFFE863;
-		colour_2 = 0x47297B;
-	}
-	else if (f->c_palette == 1)
-	{
-		colour_1 = 0xADE72F;
-		colour_2 = 0xFB68FF;
-	}
-	else if (f->c_palette == 2)
-	{
-		colour_1 = 0xFF8F56;
-		colour_2 = 0x0960BD;
-	}
-	else if (f->c_palette == 3)
-	{
-		colour_1 = 0xf24d4f;
-		colour_2 = 0x4b211f;
-	}
-	else if (f->c_palette == 4)
-	{
-		colour_1 = 0xfce611;
-		colour_2 = 0xeb1d28;
-	}
+	colour_1 = 0x000000;
+	colour_2 = 0x000000;
+	colour_1 = set_colour(f, colour_1, 1);
+	colour_2 = set_colour(f, colour_2, 2);
 	if (iter < MAX_ITER)
 	{
 		r = (int)((colour_2 >> 16 & 0xFF) + ((float)iter / (float)MAX_ITER)
@@ -63,34 +40,33 @@ int	get_colour(t_data *data, t_fractal *f, int iter)
 	return (0);
 }
 
-/* void	set_colours(t_fractal *f, int colour_1, int colour_2)
+int	set_colour(t_fractal *f, int colour, int flag)
 {
-	if (colour_1 || colour_2)
+	if (flag == 1)
 	{
 		if (f->c_palette == 0)
-		{
-			colour_1 = 0xFFE863;
-			colour_2 = 0x47297B;
-		}
+			colour = 0xFFE863;
 		else if (f->c_palette == 1)
-		{
-			colour_1 = 0xADE72F;
-			colour_2 = 0xFB68FF;
-		}
+			colour = 0xADE72F;
 		else if (f->c_palette == 2)
-		{
-			colour_1 = 0xFF8F56;
-			colour_2 = 0x0960BD;
-		}
+			colour = 0xFF8F56;
 		else if (f->c_palette == 3)
-		{
-			colour_1 = 0xf24d4f;
-			colour_2 = 0x4b211f;
-		}
+			colour = 0xf24d4f;
 		else if (f->c_palette == 4)
-		{
-			colour_1 = 0xfce611;
-			colour_2 = 0xeb1d28;
-		}
+			colour = 0xfce611;
 	}
-} */
+	else
+	{
+		if (f->c_palette == 0)
+			colour = 0x47297B;
+		else if (f->c_palette == 1)
+			colour = 0xFB68FF;
+		else if (f->c_palette == 2)
+			colour = 0x0960BD;
+		else if (f->c_palette == 3)
+			colour = 0x4b211f;
+		else if (f->c_palette == 4)
+			colour = 0xeb1d28;
+	}
+	return (colour);
+}
