@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 13:49:36 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/04/24 14:57:11 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/04/24 15:26:03 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	initialize(int argc, char **argv, t_data *data, t_fractal *fractal)
 		fractal->zoom = 1;
 		fractal->offset.x = 0;
 		fractal->offset.y = 0;
+		fractal->c_palette = 0;
 	}
 	if (argc == 1)
 	{
@@ -76,6 +77,5 @@ void	set_struct(t_fractal *fractal)
 	fractal->c.x = 0;
 	fractal->c.y = 0;
 	fractal->colour = 0xFFFFFF;
-	fractal->c_palette = 0;
 	return ;
 }
