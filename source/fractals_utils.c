@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 13:02:17 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/04/24 15:50:37 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/04/26 15:00:43 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,20 @@ void	set_mdb_range(t_fractal *fractal)
 	fractal->max.y = 2 * fractal->zoom;
 	fractal->min.x = -1.5 * fractal->zoom;
 	fractal->min.y = 0 * fractal->zoom;
-	printf("struc finished\n");
+	fractal->c.x = 0;
+	fractal->c.y = 0;
 	return ;
 }
 
 void	set_julia_range(t_fractal *fractal)
 {
-	if (fractal)
-		return ;
+	fractal->max.x = 2 * fractal->zoom;
+	fractal->max.y = 2 * fractal->zoom;
+	fractal->min.x = -2 * fractal->zoom;
+	fractal->min.y = -2 * fractal->zoom;
+	fractal->f_center.x = 0 * fractal->zoom;
+	fractal->f_center.y = 0 * fractal->zoom;
+	fractal->c.x = 0.285;
+	fractal->c.y = 0.01;
+	return ;
 }
