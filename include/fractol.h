@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 14:07:25 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/04/24 16:05:03 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/05/03 13:16:25 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ void		set_julia_range(t_fractal *fractal);
 /*render_utils.c*/
 void		update_zoom(t_data *data, int x, int y);
 void		pan_image(t_data *data, int flag);
+void		toggle_input(t_fractal *fractal);
 
 /*interface.c*/
 int			create_body_commands(t_data *data, int offset_x, int offset_y);
@@ -118,5 +119,8 @@ int			update_screen(t_data *data);
 /*colours.c*/
 int			get_colour(t_data *data, t_fractal *fractal, int iter);
 int			set_colour(t_fractal *f, int colour, int flag);
+
+/*ft_atof.c*/
+double		ft_atof(char *str);
 
 #endif

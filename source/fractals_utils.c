@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 13:02:17 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/04/26 15:00:43 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/05/03 13:36:34 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,10 @@ void	set_julia_range(t_fractal *fractal)
 	fractal->min.y = -2 * fractal->zoom;
 	fractal->f_center.x = 0 * fractal->zoom;
 	fractal->f_center.y = 0 * fractal->zoom;
-	fractal->c.x = 0.285;
-	fractal->c.y = 0.01;
+	if (fractal->f_flag == 2)
+	{
+		fractal->c.x = 0.285;
+		fractal->c.y = 0.01;
+	}
 	return ;
 }

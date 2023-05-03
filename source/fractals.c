@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 13:45:35 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/04/24 14:16:30 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/05/03 11:47:09 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ int	ft_mandelbrot(t_data *data, t_fractal *fractal)
 		}
 		fractal->pixel.x++;
 	}
-	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img.mlx_img,
-		0, 0);
 	return (0);
 }
 

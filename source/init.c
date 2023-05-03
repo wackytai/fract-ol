@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 13:49:36 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/04/26 14:57:29 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/05/03 13:36:53 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,18 @@ int	initialize(int argc, char **argv, t_data *data, t_fractal *fractal)
 	}
 	else if (argc == 2)
 		check_input(argv, data, fractal);
+	else if (argc == 4 && ft_strncmp(argv[1], "Julia", ft_strlen(argv[1])) == 0)
+	{
+		fractal->f_flag = 3;
+		printf("Dynamic Julia %i\n", fractal->f_flag);
+		fractal->c.x = ft_atof(argv[2]);
+		fractal->c.y = ft_atof(argv[3]);
+		if (fractal->c.x < -2.0 || fractal->c.x > 2.0 || fractal->c.y < -2.0 || fractal->c.y > 2.0)
+		{
+			printf("Usage Error: Arguments out of range\n");
+			render_menu(data);
+		}
+	}
 	return (0);
 }
 
@@ -84,10 +96,12 @@ void	choose_fractal(t_data *data, t_fractal *fractal)
 		set_mdb_range(fractal);
 		ft_mandelbrot(data, fractal);
 	}
-	else if (fractal->f_flag == 2)
+	else if (fractal->f_flag == 2 || fractal->f_flag == 3)
 	{
 		set_julia_range(fractal);
 		ft_julia_static(data, fractal);
 	}
+	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img.mlx_img,
+		0, 0);
 	return ;
 }
