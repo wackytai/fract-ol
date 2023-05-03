@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 14:07:25 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/05/03 13:16:25 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/05/03 15:09:45 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ typedef struct s_data
 	void		*win_ptr;
 	t_img		img;
 	t_fractal	f;
+	int			flag;
 }	t_data;
 
 /*main.c*/
@@ -93,7 +94,7 @@ int			ft_julia_static(t_data *data, t_fractal *fractal);
 /*fractals_utils.c*/
 void		iterate_complex(t_data *data, t_fractal *f);
 void		set_mdb_range(t_fractal *fractal);
-void		set_julia_range(t_fractal *fractal);
+void		set_julia_range(t_fractal *fractal, int flag);
 
 /*render_utils.c*/
 void		update_zoom(t_data *data, int x, int y);

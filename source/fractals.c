@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 13:45:35 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/05/03 14:19:46 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/05/03 15:04:50 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,14 @@ int	ft_mandelbrot(t_data *data, t_fractal *fractal)
 		}
 		fractal->pixel.x++;
 	}
+	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img.mlx_img,
+		0, 0);
 	return (0);
 }
 
 int	ft_julia_static(t_data *data, t_fractal *fractal)
 {
-	fractal->c.x += fractal->f_center.x + fractal->offset.x;
+/* 	fractal->c.x += fractal->f_center.x + fractal->offset.x;
 	fractal->c.y += fractal->f_center.y + fractal->offset.y;
 	while (fractal->pixel.x < W_WIDTH)
 	{
@@ -50,6 +52,8 @@ int	ft_julia_static(t_data *data, t_fractal *fractal)
 			fractal->pixel.y++;
 		}
 		fractal->pixel.x++;
-	}
+	} */
+	if (data || fractal)
+		return (0);
 	return (0);
 }

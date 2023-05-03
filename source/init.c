@@ -6,12 +6,13 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 13:49:36 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/05/03 14:07:56 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/05/03 15:10:07 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fractol.h"
 
+void	set_struct(t_fractal *fractal);
 void	check_input(char **argv, t_data *data, t_fractal *fractal);
 void	choose_fractal(t_data *data, t_fractal *fractal);
 
@@ -37,6 +38,7 @@ int	initialize(int argc, char **argv, t_data *data, t_fractal *fractal)
 		check_input(argv, data, fractal);
 	else if (argc == 4 && ft_strncmp(argv[1], "Julia", ft_strlen(argv[1])) == 0)
 	{
+		data->flag = 3;
 		fractal->f_flag = 3;
 		printf("Dynamic Julia %i\n", fractal->f_flag);
 		fractal->c.x = ft_atof(argv[2]);
@@ -52,14 +54,17 @@ int	initialize(int argc, char **argv, t_data *data, t_fractal *fractal)
 
 void	check_input(char **argv, t_data *data, t_fractal *fractal)
 {
+	set_struct(fractal);
 	if (ft_strncmp(argv[1], "Mandelbrot", ft_strlen(argv[1])) == 0)
 	{
+		data->flag = 1;
 		fractal->f_flag = 1;
 		printf("Mandelbrot set selected %i\n", fractal->f_flag);
 		choose_fractal(data, fractal);
 	}
 	else if (ft_strncmp(argv[1], "Julia", ft_strlen(argv[1])) == 0)
 	{
+		data->flag = 2;
 		fractal->f_flag = 2;
 		printf("Static Julia set selected %i\n", fractal->f_flag);
 		choose_fractal(data, fractal);
@@ -90,18 +95,15 @@ void	set_struct(t_fractal *fractal)
 
 void	choose_fractal(t_data *data, t_fractal *fractal)
 {
-	set_struct(fractal);
-	if (fractal->f_flag == 1)
+	if (data->flag == 1)
 	{
 		set_mdb_range(fractal);
 		ft_mandelbrot(data, fractal);
 	}
-	else if (fractal->f_flag == 2 || fractal->f_flag == 3)
+	else if (data->flag == 2 || data->flag == 3)
 	{
-		set_julia_range(fractal);
+		set_julia_range(fractal, data->flag);
 		ft_julia_static(data, fractal);
 	}
-	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img.mlx_img,
-		0, 0);
 	return ;
 }
