@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 13:49:36 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/05/03 13:36:53 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/05/03 14:07:56 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,14 +54,14 @@ void	check_input(char **argv, t_data *data, t_fractal *fractal)
 {
 	if (ft_strncmp(argv[1], "Mandelbrot", ft_strlen(argv[1])) == 0)
 	{
-		printf("Mandelbrot set selected %i\n", fractal->f_flag);
 		fractal->f_flag = 1;
+		printf("Mandelbrot set selected %i\n", fractal->f_flag);
 		choose_fractal(data, fractal);
 	}
 	else if (ft_strncmp(argv[1], "Julia", ft_strlen(argv[1])) == 0)
 	{
-		printf("Static Julia set selected %i\n", fractal->f_flag);
 		fractal->f_flag = 2;
+		printf("Static Julia set selected %i\n", fractal->f_flag);
 		choose_fractal(data, fractal);
 	}
 	else
