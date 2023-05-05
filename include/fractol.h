@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 14:07:25 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/05/05 13:54:23 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/05/05 14:53:13 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,15 @@ typedef struct s_complex
 	double	y;
 }	t_complex;
 
+typedef struct s_colours
+{
+	int	colour_1;
+	int	colour_2;
+	int	colour_3;
+	int	colour_4;
+	int	colour_5;
+}	t_palette;
+
 typedef struct s_fractal
 {
 	t_complex	pixel;
@@ -61,6 +70,7 @@ typedef struct s_fractal
 	int			z_flag;
 	int			colour;
 	int			c_palette;
+	t_palette	col_set;
 }	t_fractal;
 
 typedef struct s_data
@@ -119,6 +129,7 @@ int			update_screen(t_data *data);
 /*colours.c*/
 int			get_colour(t_data *data, int iter);
 int			set_colour(t_fractal *f, int colour, int flag);
+void		set_palettes(int set, t_palette *plt);
 
 /*ft_atof.c*/
 double		ft_atof(char *str);

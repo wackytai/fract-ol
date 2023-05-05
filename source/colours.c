@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 16:59:57 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/05/05 11:37:11 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/05/05 15:00:48 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,8 @@ int	get_colour(t_data *data, int iter)
 	int	g;
 	int	b;
 
-	colour_1 = 0x000000;
-	colour_2 = 0x000000;
-	colour_1 = set_colour(data->f, colour_1, 1);
-	colour_2 = set_colour(data->f, colour_2, 2);
+	colour_1 = data->f->col_set.colour_1;
+	colour_2 = data->f->col_set.colour_2;
 	if (iter < MAX_ITER)
 	{
 		r = (int)((colour_2 >> 16 & 0xFF) + ((float)iter / (float)MAX_ITER)
@@ -41,33 +39,47 @@ int	get_colour(t_data *data, int iter)
 	return (0);
 }
 
-int	set_colour(t_fractal *f, int colour, int flag)
+void	set_palettes(int set, t_palette *plt)
 {
-	if (flag == 1)
+	if (set == 0)
 	{
-		if (f->c_palette == 0)
-			colour = 0xFFE863;
-		else if (f->c_palette == 1)
-			colour = 0xADE72F;
-		else if (f->c_palette == 2)
-			colour = 0xFF8F56;
-		else if (f->c_palette == 3)
-			colour = 0xf24d4f;
-		else if (f->c_palette == 4)
-			colour = 0xfce611;
+		plt->colour_1 = 0xB431F4;
+		plt->colour_2 = 0xCC37C2;
+		plt->colour_3 = 0xFF24A4;
+		plt->colour_4 = 0xACE900;
+		plt->colour_5 = 0x46E4BC;
 	}
-	else
+	else if (set == 1)
 	{
-		if (f->c_palette == 0)
-			colour = 0x47297B;
-		else if (f->c_palette == 1)
-			colour = 0xFB68FF;
-		else if (f->c_palette == 2)
-			colour = 0x0960BD;
-		else if (f->c_palette == 3)
-			colour = 0x4b211f;
-		else if (f->c_palette == 4)
-			colour = 0xeb1d28;
+		plt->colour_1 = 0xCFF09E;
+		plt->colour_2 = 0xA8DBA8;
+		plt->colour_3 = 0x79BD9A;
+		plt->colour_4 = 0x3B8686;
+		plt->colour_5 = 0x0B486B;
 	}
-	return (colour);
+	else if (set == 2)
+	{
+		plt->colour_1 = 0x343838;
+		plt->colour_2 = 0x005F6B;
+		plt->colour_3 = 0x008C9E;
+		plt->colour_4 = 0x00B4CC;
+		plt->colour_5 = 0x00DFFC;
+	}
+	else if (set == 3)
+	{
+		plt->colour_1 = 0x1C0113;
+		plt->colour_2 = 0x6B0103;
+		plt->colour_3 = 0xA30006;
+		plt->colour_4 = 0xC21A01;
+		plt->colour_5 = 0xF03C02;
+	}
+	else if (set == 4)
+	{
+		plt->colour_1 = 0x69D2E7;
+		plt->colour_2 = 0xA7DBD8;
+		plt->colour_3 = 0xE0E4CC;
+		plt->colour_4 = 0xF38630;
+		plt->colour_5 = 0xFA6900;
+	}
+	return ;
 }

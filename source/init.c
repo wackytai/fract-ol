@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 13:49:36 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/05/05 13:42:01 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/05/05 14:59:17 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	initialize(int argc, char **argv, t_data *data, t_fractal *fractal)
 		data->f->offset.x = 0;
 		data->f->offset.y = 0;
 		data->f->c_palette = 0;
+		set_palettes(data->f->c_palette, &data->f->col_set);
 	}
 	if (argc == 1)
 	{
