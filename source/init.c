@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 13:49:36 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/05/05 09:52:51 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/05/05 13:42:01 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,17 @@ int	initialize(int argc, char **argv, t_data *data, t_fractal *fractal)
 	else if (argc == 4 && ft_strncmp(argv[1], "Julia", ft_strlen(argv[1])) == 0)
 	{
 		data->flag = 3;
-		printf("Dynamic Julia %i\n", data->flag);
+		printf("Dynamic Julia set selected\n");
 		fractal->c.x = ft_atof(argv[2]);
 		fractal->c.y = ft_atof(argv[3]);
-		if (fractal->c.x < -2.0 || fractal->c.x > 2.0 || fractal->c.y < -2.0 || fractal->c.y > 2.0)
+		if (fractal->c.x < -2.0 || fractal->c.x > 2.0 || fractal->c.y < -2.0
+			|| fractal->c.y > 2.0)
 		{
 			printf("Usage Error: Invalid arguments for Julia\n");
 			render_menu(data);
 		}
+		else
+			choose_fractal(data);
 	}
 	else
 	{
@@ -62,13 +65,13 @@ void	check_input(char **argv, t_data *data)
 	if (ft_strncmp(argv[1], "Mandelbrot", ft_strlen(argv[1])) == 0)
 	{
 		data->flag = 1;
-		printf("Mandelbrot set selected %i\n", data->flag);
+		printf("Mandelbrot set selected\n");
 		choose_fractal(data);
 	}
 	else if (ft_strncmp(argv[1], "Julia", ft_strlen(argv[1])) == 0)
 	{
 		data->flag = 2;
-		printf("Static Julia set selected %i\n", data->flag);
+		printf("Static Julia set selected\n");
 		choose_fractal(data);
 	}
 	else
@@ -81,14 +84,14 @@ void	check_input(char **argv, t_data *data)
 
 void	set_struct(t_fractal *fractal)
 {
-	fractal->pixel.x = 0;
+/* 	fractal->pixel.x = 0;
 	fractal->pixel.y = 0;
 	fractal->f_center.x = -0.75 * fractal->zoom;
 	fractal->f_center.y = -1 * fractal->zoom;
 	fractal->max.x = 2 * fractal->zoom;
 	fractal->max.y = 2 * fractal->zoom;
 	fractal->min.x = -1.5 * fractal->zoom;
-	fractal->min.y = 0 * fractal->zoom;
+	fractal->min.y = 0 * fractal->zoom; */
 	fractal->z.x = 0;
 	fractal->z.y = 0;
 	fractal->colour = 0xFFFFFF;

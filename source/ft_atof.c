@@ -6,45 +6,62 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 13:02:19 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/05/05 09:48:40 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/05/05 13:08:40 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fractol.h"
 
+int		skip_char(char **str, int flag);
+
 double	ft_atof(char *str)
 {
-	int		i;
 	double	res;
 	int		s;
 	double	div;
 
-	i = 0;
 	res = 0;
-	s = 1;
 	div = 0.1;
-	if (str[i] == '-' || str[i] == '+')
+	s = skip_char(&str, 0);
+	if (*str > 47 && *str < 51)
 	{
-		if (str[i] == '-')
-			s *= -1;
-		i++;
-	}
-	if (str[i] > 47 && str[i] < 51)
-	{
-		res = (res * 10.0) + (str[i] - '0');
-		i++;
+		res = (res * 10.0) + (*str - '0');
+		str++;
 	}
 	else
-		return (3);
-	if (str[i] == '.')
-		i++;
-	while (str[i] > 47 && str[i] < 58)
+		res = 3;
+	skip_char(&str, 1);
+	while (*str > 47 && *str < 58)
 	{
-		res = res + ((str[i] - '0') * div);
+		res = res + ((*str - '0') * div);
 		div *= 0.1;
-		i++;
+		str++;
 	}
-	if (str[i] != '\0')
-		return (3);
+	if (*str != '\0')
+		res = 3;
 	return (res * s);
+}
+
+int	skip_char(char **str, int flag)
+{
+	if (flag == 0)
+	{
+		if (*str[0] == '-' || *str[0] == '+')
+		{
+			if (*str[0] == '-')
+			{
+				(*str)++;
+				return (-1);
+			}
+			(*str)++;
+		}
+		return (1);
+	}
+	if (flag == 1)
+	{
+		if (*str[0] == '.')
+			(*str)++;
+		return (1);
+	}
+	return (1);
 }

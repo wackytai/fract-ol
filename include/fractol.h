@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 14:07:25 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/05/05 09:39:46 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/05/05 13:54:23 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 # define W_WIDTH 1290
 # define W_HEIGHT 720
-# define MAX_ITER 50
+# define MAX_ITER 40
 
 typedef struct s_img
 {
@@ -122,5 +122,6 @@ int			set_colour(t_fractal *f, int colour, int flag);
 
 /*ft_atof.c*/
 double		ft_atof(char *str);
+int			skip_char(char **str, int flag);
 
 #endif

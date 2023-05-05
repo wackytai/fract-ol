@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 13:45:35 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/05/05 09:38:49 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/05/05 13:28:27 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,16 @@ int	ft_julia_static(t_data *data)
 		data->f->pixel.y = 0;
 		while (data->f->pixel.y < W_HEIGHT)
 		{
-			data->f->z.x = (data->f->pixel.x / (double)W_WIDTH) * 4 - 2;
-			data->f->z.y = (data->f->pixel.y / (double)W_HEIGHT) * 4 - 2;
+			data->f->z.x = data->f->min.x + (data->f->max.x - data->f->min.x)
+				* data->f->pixel.x / (double)W_WIDTH + data->f->offset.x;
+			data->f->z.y = data->f->max.y - (data->f->max.y - data->f->min.y)
+				* data->f->pixel.y / (double)W_HEIGHT - data->f->offset.y;
 			iterate_complex(data);
 			data->f->pixel.y++;
 		}
 		data->f->pixel.x++;
 	}
+	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img.mlx_img,
+		0, 0);
 	return (0);
 }

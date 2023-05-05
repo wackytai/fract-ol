@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 16:59:57 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/05/05 09:36:41 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/05/05 11:37:11 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ int	get_colour(t_data *data, int iter)
 		b = (int)((colour_2 & 0xFF) + ((float)iter / (float)MAX_ITER)
 				* ((colour_1 & 0xFF) - (colour_2 & 0xFF)));
 		data->f->colour = r << 16 | g << 8 | b;
-		img_pix_put(&data->img, data->f->pixel.x, data->f->pixel.y, data->f->colour);
+		img_pix_put(&data->img, data->f->pixel.x, data->f->pixel.y,
+			data->f->colour);
 	}
 	else
 		img_pix_put(&data->img, data->f->pixel.x, data->f->pixel.y, colour_1);
