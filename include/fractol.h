@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 14:07:25 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/05/03 15:09:45 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/05/05 09:39:46 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ typedef struct s_fractal
 	t_complex	z;
 	double		zoom;
 	int			z_flag;
-	int			f_flag;
 	int			colour;
 	int			c_palette;
 }	t_fractal;
@@ -69,7 +68,7 @@ typedef struct s_data
 	void		*mlx_ptr;
 	void		*win_ptr;
 	t_img		img;
-	t_fractal	f;
+	t_fractal	*f;
 	int			flag;
 }	t_data;
 
@@ -88,11 +87,11 @@ int			fill_image(t_data *data);
 int			render(t_data *data);
 
 /*fractals.c*/
-int			ft_mandelbrot(t_data *data, t_fractal *fractal);
-int			ft_julia_static(t_data *data, t_fractal *fractal);
+int			ft_mandelbrot(t_data *data);
+int			ft_julia_static(t_data *data);
 
 /*fractals_utils.c*/
-void		iterate_complex(t_data *data, t_fractal *f);
+void		iterate_complex(t_data *data);
 void		set_mdb_range(t_fractal *fractal);
 void		set_julia_range(t_fractal *fractal, int flag);
 
@@ -108,9 +107,9 @@ int			render_menu(t_data *data);
 
 /*init.c*/
 int			initialize(int argc, char **argv, t_data *data, t_fractal *fractal);
-void		check_input(char **argv, t_data *data, t_fractal *fractal);
+void		check_input(char **argv, t_data *data);
 void		set_struct(t_fractal *fractal);
-void		choose_fractal(t_data *data, t_fractal *fractal);
+void		choose_fractal(t_data *data);
 
 /*clean.c*/
 int			destroy_all(t_data *data);
@@ -118,7 +117,7 @@ int			close_window(t_data *data);
 int			update_screen(t_data *data);
 
 /*colours.c*/
-int			get_colour(t_data *data, t_fractal *fractal, int iter);
+int			get_colour(t_data *data, int iter);
 int			set_colour(t_fractal *f, int colour, int flag);
 
 /*ft_atof.c*/

@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 15:53:35 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/05/03 15:08:29 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/05/05 09:44:03 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,12 @@ int	close_window(t_data *data)
 
 int	update_screen(t_data *data)
 {
-	printf("f0: %i\n", data->flag);
 	mlx_clear_window(data->mlx_ptr, data->win_ptr);
-	set_struct(&data->f);
+	set_struct(data->f);
 	if (data->flag == 1)
-		ft_mandelbrot(data, &data->f);
+		ft_mandelbrot(data);
 	else if (data->flag == 2 || data->flag == 3)
-		ft_julia_static(data, &data->f);
+		ft_julia_static(data);
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img.mlx_img,
 		0, 0);
 	return (0);

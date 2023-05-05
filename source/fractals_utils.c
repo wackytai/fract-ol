@@ -6,32 +6,31 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 13:02:17 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/05/03 15:09:54 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/05/05 09:35:38 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fractol.h"
 
-void	iterate_complex(t_data *data, t_fractal *f)
+void	iterate_complex(t_data *data)
 {
 	int		iter;
 	double	temp;
 
 	iter = -1;
 	temp = 0;
-	while (++iter < MAX_ITER && (f->z.x * f->z.x) + (f->z.y * f->z.y) <= 4)
+	while (++iter < MAX_ITER && (data->f->z.x * data->f->z.x) + (data->f->z.y * data->f->z.y) <= 4)
 	{
-		temp = (f->z.x * f->z.x) - (f->z.y * f->z.y) + f->c.x;
-		f->z.y = (2 * f->z.x * f->z.y) + f->c.y;
-		f->z.x = temp;
+		temp = (data->f->z.x * data->f->z.x) - (data->f->z.y * data->f->z.y) + data->f->c.x;
+		data->f->z.y = (2 * data->f->z.x * data->f->z.y) + data->f->c.y;
+		data->f->z.x = temp;
 	}
-	get_colour(data, f, iter);
+	get_colour(data, iter);
 	return ;
 }
 
 void	set_mdb_range(t_fractal *fractal)
 {
-	fractal->f_flag = 1;
 	fractal->f_center.x = -0.75 * fractal->zoom;
 	fractal->f_center.y = -1 * fractal->zoom;
 	fractal->max.x = 2 * fractal->zoom;
@@ -49,12 +48,12 @@ void	set_julia_range(t_fractal *fractal, int flag)
 	fractal->max.y = 2 * fractal->zoom;
 	fractal->min.x = -2 * fractal->zoom;
 	fractal->min.y = -2 * fractal->zoom;
-	fractal->f_center.x = 0 * fractal->zoom;
-	fractal->f_center.y = 0 * fractal->zoom;
 	if (flag == 2)
 	{
 		fractal->c.x = 0.285;
 		fractal->c.y = 0.01;
+		fractal->f_center.x = fractal->c.x * fractal->zoom;
+		fractal->f_center.y = fractal->c.y * fractal->zoom;
 	}
 	return ;
 }

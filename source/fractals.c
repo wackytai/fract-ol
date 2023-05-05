@@ -6,54 +6,50 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 13:45:35 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/05/03 15:04:50 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/05/05 09:38:49 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fractol.h"
 
-int	ft_mandelbrot(t_data *data, t_fractal *fractal)
+int	ft_mandelbrot(t_data *data)
 {
-	while (fractal->pixel.x < W_WIDTH)
+	while (data->f->pixel.x < W_WIDTH)
 	{
-		fractal->pixel.y = 0;
-		while (fractal->pixel.y < W_HEIGHT)
+		data->f->pixel.y = 0;
+		while (data->f->pixel.y < W_HEIGHT)
 		{
-			fractal->c.x = fractal->min.x + (fractal->pixel.x / (double)W_WIDTH)
-				* (fractal->max.x - fractal->min.x) + fractal->f_center.x
-				+ fractal->offset.x;
-			fractal->c.y = fractal->min.y + (fractal->pixel.y
-					/ (double)W_HEIGHT) * (fractal->max.y - fractal->min.y)
-				+ fractal->f_center.y + fractal->offset.y;
-			fractal->z.x = 0;
-			fractal->z.y = 0;
-			iterate_complex(data, fractal);
-			fractal->pixel.y++;
+			data->f->c.x = data->f->min.x + (data->f->pixel.x / (double)W_WIDTH)
+				* (data->f->max.x - data->f->min.x) + data->f->f_center.x
+				+ data->f->offset.x;
+			data->f->c.y = data->f->min.y + (data->f->pixel.y
+					/ (double)W_HEIGHT) * (data->f->max.y - data->f->min.y)
+				+ data->f->f_center.y + data->f->offset.y;
+			data->f->z.x = 0;
+			data->f->z.y = 0;
+			iterate_complex(data);
+			data->f->pixel.y++;
 		}
-		fractal->pixel.x++;
+		data->f->pixel.x++;
 	}
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img.mlx_img,
 		0, 0);
 	return (0);
 }
 
-int	ft_julia_static(t_data *data, t_fractal *fractal)
+int	ft_julia_static(t_data *data)
 {
-/* 	fractal->c.x += fractal->f_center.x + fractal->offset.x;
-	fractal->c.y += fractal->f_center.y + fractal->offset.y;
-	while (fractal->pixel.x < W_WIDTH)
+	while (data->f->pixel.x < W_WIDTH)
 	{
-		fractal->pixel.y = 0;
-		while (fractal->pixel.y < W_HEIGHT)
+		data->f->pixel.y = 0;
+		while (data->f->pixel.y < W_HEIGHT)
 		{
-			fractal->z.x = 0;
-			fractal->z.y = 0;
-			iterate_complex(data, fractal);
-			fractal->pixel.y++;
+			data->f->z.x = (data->f->pixel.x / (double)W_WIDTH) * 4 - 2;
+			data->f->z.y = (data->f->pixel.y / (double)W_HEIGHT) * 4 - 2;
+			iterate_complex(data);
+			data->f->pixel.y++;
 		}
-		fractal->pixel.x++;
-	} */
-	if (data || fractal)
-		return (0);
+		data->f->pixel.x++;
+	}
 	return (0);
 }
