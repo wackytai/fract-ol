@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 13:49:36 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/05/05 09:43:16 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/05/05 09:52:51 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,14 @@ int	initialize(int argc, char **argv, t_data *data, t_fractal *fractal)
 		fractal->c.y = ft_atof(argv[3]);
 		if (fractal->c.x < -2.0 || fractal->c.x > 2.0 || fractal->c.y < -2.0 || fractal->c.y > 2.0)
 		{
-			printf("Usage Error: Arguments out of range\n");
+			printf("Usage Error: Invalid arguments for Julia\n");
 			render_menu(data);
 		}
+	}
+	else
+	{
+		printf("Usage Error: Wrong arguments\n");
+		render_menu(data);
 	}
 	return (0);
 }
