@@ -6,37 +6,42 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 16:59:57 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/05/05 15:00:48 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/05/05 16:01:26 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fractol.h"
 
+int	colour_lerp(int start, int end, double gradient);
+
 int	get_colour(t_data *data, int iter)
 {
-	int	colour_1;
-	int	colour_2;
-	int	r;
-	int	g;
-	int	b;
-
-	colour_1 = data->f->col_set.colour_1;
-	colour_2 = data->f->col_set.colour_2;
 	if (iter < MAX_ITER)
 	{
-		r = (int)((colour_2 >> 16 & 0xFF) + ((float)iter / (float)MAX_ITER)
-				* ((colour_1 >> 16 & 0xFF) - (colour_2 >> 16 & 0xFF)));
-		g = (int)((colour_2 >> 8 & 0xFF) + ((float)iter / (float)MAX_ITER)
-				* ((colour_1 >> 8 & 0xFF) - (colour_2 >> 8 & 0xFF)));
-		b = (int)((colour_2 & 0xFF) + ((float)iter / (float)MAX_ITER)
-				* ((colour_1 & 0xFF) - (colour_2 & 0xFF)));
-		data->f->colour = r << 16 | g << 8 | b;
+		data->f->colour = colour_lerp(data->f->col_set.colour_1, data->f->col_set.colour_2, (double)iter / MAX_ITER);
 		img_pix_put(&data->img, data->f->pixel.x, data->f->pixel.y,
 			data->f->colour);
 	}
 	else
-		img_pix_put(&data->img, data->f->pixel.x, data->f->pixel.y, colour_1);
+		img_pix_put(&data->img, data->f->pixel.x, data->f->pixel.y, data->f->col_set.colour_5);
 	return (0);
+}
+
+int	colour_lerp(int start, int end, double gradient)
+{
+	int	r;
+	int	g;
+	int	b;
+	int	colour;
+
+	r = (int)(((start >> 16 & 0xFF) + gradient
+				* ((end >> 16 & 0xFF) - (start >> 16 & 0xFF))) + 0.5);
+	g = (int)(((start >> 8 & 0xFF) + gradient
+				* ((end >> 8 & 0xFF) - (start >> 8 & 0xFF))) + 0.5);
+	b = (int)(((start & 0xFF) + gradient
+				* ((end & 0xFF) - (start & 0xFF))) + 0.5);
+	colour = r << 16 | g << 8 | b;
+	return (colour);
 }
 
 void	set_palettes(int set, t_palette *plt)

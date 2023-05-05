@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 14:07:25 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/05/05 14:53:13 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/05/05 15:42:14 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,7 @@ int			update_screen(t_data *data);
 
 /*colours.c*/
 int			get_colour(t_data *data, int iter);
-int			set_colour(t_fractal *f, int colour, int flag);
+int			colour_lerp(int start, int end, double gradient);
 void		set_palettes(int set, t_palette *plt);
 
 /*ft_atof.c*/
