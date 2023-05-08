@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 16:59:57 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/05/05 16:01:26 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/05/08 08:38:58 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,14 @@ int	get_colour(t_data *data, int iter)
 {
 	if (iter < MAX_ITER)
 	{
-		data->f->colour = colour_lerp(data->f->col_set.colour_1, data->f->col_set.colour_2, (double)iter / MAX_ITER);
+		data->f->colour = colour_lerp(data->f->col_set.colour_1,
+				data->f->col_set.colour_2, (double)iter / MAX_ITER);
 		img_pix_put(&data->img, data->f->pixel.x, data->f->pixel.y,
 			data->f->colour);
 	}
 	else
-		img_pix_put(&data->img, data->f->pixel.x, data->f->pixel.y, data->f->col_set.colour_5);
+		img_pix_put(&data->img, data->f->pixel.x, data->f->pixel.y,
+			data->f->col_set.colour_5);
 	return (0);
 }
 
