@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 15:16:50 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/04/21 14:37:40 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/05/08 13:43:33 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,21 @@ int	create_body_commands(t_data *data, int offset_x, int offset_y)
 {
 	mlx_set_font(data->mlx_ptr, data->win_ptr, "10x20");
 	mlx_string_put(data->mlx_ptr, data->win_ptr, (W_WIDTH / 3 - offset_x),
-		(W_HEIGHT / 3) * 3 / 2, 0xFFFFFF, "Zoom:");
+		(W_HEIGHT / 3) * 3 / 2 + (offset_y), 0xFFFFFF, "Zoom:");
 	mlx_string_put(data->mlx_ptr, data->win_ptr, ((W_WIDTH / 3) * 2) - offset_x,
-		(W_HEIGHT / 3) * 3 / 2, 0xFFFFFF, "Mouse Scroll");
+		(W_HEIGHT / 3) * 3 / 2 + (offset_y), 0xFFFFFF, "Mouse Scroll");
 	mlx_string_put(data->mlx_ptr, data->win_ptr, (W_WIDTH / 3 - offset_x),
-		((W_HEIGHT / 3) * 3 / 2) + (offset_y * 2), 0xFFFFFF, "Pan:");
+		((W_HEIGHT / 3) * 3 / 2) + (offset_y * 3), 0xFFFFFF, "Pan:");
 	mlx_string_put(data->mlx_ptr, data->win_ptr, ((W_WIDTH / 3) * 2) - offset_x,
-		((W_HEIGHT / 3) * 3 / 2) + (offset_y * 2), 0xFFFFFF, "Arrow Keys");
+		((W_HEIGHT / 3) * 3 / 2) + (offset_y * 3), 0xFFFFFF, "Arrow Keys");
 	mlx_string_put(data->mlx_ptr, data->win_ptr, (W_WIDTH / 3 - offset_x),
-		((W_HEIGHT / 3) * 3 / 2) + (offset_y * 4), 0xFFFFFF, "Shift Colours:");
+		((W_HEIGHT / 3) * 3 / 2) + (offset_y * 5), 0xFFFFFF, "Shift Colours:");
 	mlx_string_put(data->mlx_ptr, data->win_ptr, ((W_WIDTH / 3) * 2) - offset_x,
-		((W_HEIGHT / 3) * 3 / 2) + (offset_y * 4), 0xFFFFFF, "Mouse Movement");
+		((W_HEIGHT / 3) * 3 / 2) + (offset_y * 5), 0xFFFFFF, "Mouse Click");
+	mlx_string_put(data->mlx_ptr, data->win_ptr,
+		(W_WIDTH / 2) - (offset_x * 15 / 4),
+		((W_HEIGHT / 4) * 3) + offset_y, 0xFFFFFF,
+		"Usage: ./fractol <set-name> <arg1 arg2 (if julia)>");
 	return (0);
 }
 
@@ -48,6 +52,8 @@ int	create_menu(t_data *data)
 		W_HEIGHT / 3, 0xFFFFFF, "Mandelbrot");
 	mlx_string_put(data->mlx_ptr, data->win_ptr, ((W_WIDTH / 3) * 2) - offset_x,
 		(W_HEIGHT / 3) + (2 * offset_y), 0xFFFFFF, "Julia");
+	mlx_string_put(data->mlx_ptr, data->win_ptr, ((W_WIDTH / 3) * 2) - offset_x,
+		(W_HEIGHT / 3) + (3 * offset_y), 0xFFFFFF, "Burning Ship");
 	create_body_commands(data, offset_x, offset_y);
 	return (0);
 }
