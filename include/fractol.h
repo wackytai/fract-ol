@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 14:07:25 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/05/08 11:24:12 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/05/08 13:05:41 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,8 +120,9 @@ int			render_menu(t_data *data);
 
 /*init.c*/
 int			initialize(int argc, char **argv, t_data *data, t_fractal *fractal);
+void		error_management(t_data *data, int error);
 void		check_input(char **argv, t_data *data);
-void		set_struct(t_fractal *fractal);
+void		set_data(t_data *data);
 void		choose_fractal(t_data *data);
 
 /*clean.c*/
