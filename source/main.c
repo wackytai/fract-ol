@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:44:06 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/05/05 14:54:11 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/05/08 13:14:50 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,17 +58,13 @@ int	handle_mouse_input(int button, int x, int y, t_data *data)
 	}
 	if (button == 1)
 	{
-		data->f->c_palette += 1;
-		if (data->f->c_palette > 4)
-			data->f->c_palette = 0;
+		update_colour_set(data, 1);
 		set_palettes(data->f->c_palette, &data->f->col_set);
 		update_screen(data);
 	}
 	if (button == 3)
 	{
-		data->f->c_palette -= 1;
-		if (data->f->c_palette < 0)
-			data->f->c_palette = 4;
+		update_colour_set(data, -1);
 		set_palettes(data->f->c_palette, &data->f->col_set);
 		update_screen(data);
 	}

@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 14:07:25 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/05/08 13:05:41 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/05/08 13:17:47 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ void		iterate_abs(t_data *data);
 /*render_utils.c*/
 void		update_zoom(t_data *data, int x, int y);
 void		pan_image(t_data *data, int flag);
-void		toggle_input(t_fractal *fractal);
+void		update_colour_set(t_data *data, int flag);
 
 /*interface.c*/
 int			create_body_commands(t_data *data, int offset_x, int offset_y);
@@ -134,6 +134,8 @@ int			update_screen(t_data *data);
 int			get_colour(t_data *data, int iter);
 int			colour_lerp(int start, int end, double gradient);
 void		set_palettes(int set, t_palette *plt);
+void		set_palettes_2(int set, t_palette *plt);
+
 
 /*ft_atof.c*/
 double		ft_atof(char *str);

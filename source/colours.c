@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 16:59:57 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/05/08 11:37:34 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/05/08 13:20:05 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,23 +48,33 @@ int	colour_lerp(int start, int end, double gradient)
 
 void	set_palettes(int set, t_palette *plt)
 {
-	if (set == 0)
+	if (set < 2)
 	{
-		plt->colour_1 = 0xB431F4;
-		plt->colour_2 = 0xCC37C2;
-		plt->colour_3 = 0xFF24A4;
-		plt->colour_4 = 0xACE900;
-		plt->colour_5 = 0x46E4BC;
+		if (set == 0)
+		{
+			plt->colour_1 = 0xB431F4;
+			plt->colour_2 = 0xCC37C2;
+			plt->colour_3 = 0xFF24A4;
+			plt->colour_4 = 0xACE900;
+			plt->colour_5 = 0x46E4BC;
+		}
+		else if (set == 1)
+		{
+			plt->colour_1 = 0xCFF09E;
+			plt->colour_2 = 0xA8DBA8;
+			plt->colour_3 = 0x79BD9A;
+			plt->colour_4 = 0x3B8686;
+			plt->colour_5 = 0x0B486B;
+		}
 	}
-	else if (set == 1)
-	{
-		plt->colour_1 = 0xCFF09E;
-		plt->colour_2 = 0xA8DBA8;
-		plt->colour_3 = 0x79BD9A;
-		plt->colour_4 = 0x3B8686;
-		plt->colour_5 = 0x0B486B;
-	}
-	else if (set == 2)
+	else
+		set_palettes_2(set, plt);
+	return ;
+}
+
+void	set_palettes_2(int set, t_palette *plt)
+{
+	if (set == 2)
 	{
 		plt->colour_1 = 0x343838;
 		plt->colour_2 = 0x005F6B;

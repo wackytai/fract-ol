@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 13:52:14 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/05/08 11:38:49 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/05/08 13:14:37 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,22 @@ void	pan_image(t_data *data, int flag)
 	else if (flag == -2)
 		data->f->offset.y += 0.15 * data->f->zoom;
 	update_screen(data);
+	return ;
+}
+
+void	update_colour_set(t_data *data, int flag)
+{
+	if (flag > 0)
+	{
+		data->f->c_palette += 1;
+		if (data->f->c_palette > 4)
+			data->f->c_palette = 0;
+	}
+	if (flag < 0)
+	{
+		data->f->c_palette -= 1;
+		if (data->f->c_palette < 0)
+			data->f->c_palette = 4;
+	}
 	return ;
 }
