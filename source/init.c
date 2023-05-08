@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 13:49:36 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/05/05 14:59:17 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/05/08 09:07:12 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,16 +63,22 @@ int	initialize(int argc, char **argv, t_data *data, t_fractal *fractal)
 void	check_input(char **argv, t_data *data)
 {
 	set_struct(data->f);
-	if (ft_strncmp(argv[1], "Mandelbrot", ft_strlen(argv[1])) == 0)
+	if (ft_strncmp(argv[1], "mandelbrot", ft_strlen(argv[1])) == 0)
 	{
 		data->flag = 1;
 		printf("Mandelbrot set selected\n");
 		choose_fractal(data);
 	}
-	else if (ft_strncmp(argv[1], "Julia", ft_strlen(argv[1])) == 0)
+	else if (ft_strncmp(argv[1], "julia", ft_strlen(argv[1])) == 0)
 	{
 		data->flag = 2;
 		printf("Static Julia set selected\n");
+		choose_fractal(data);
+	}
+	else if (ft_strncmp(argv[1], "burning_ship", ft_strlen(argv[1])) == 0)
+	{
+		data->flag = 4;
+		printf("Burning Ship set selected\n");
 		choose_fractal(data);
 	}
 	else
@@ -110,6 +116,11 @@ void	choose_fractal(t_data *data)
 	{
 		set_julia_range(data->f, data->flag);
 		ft_julia_static(data);
+	}
+	else if (data->flag == 4)
+	{
+		set_ship_range(data->f);
+		ft_burning_ship(data);
 	}
 	return ;
 }

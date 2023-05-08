@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 14:07:25 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/05/05 15:42:14 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/05/08 09:05:00 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,11 +99,14 @@ int			render(t_data *data);
 /*fractals.c*/
 int			ft_mandelbrot(t_data *data);
 int			ft_julia_static(t_data *data);
+int			ft_burning_ship(t_data *data);
 
 /*fractals_utils.c*/
 void		iterate_complex(t_data *data);
 void		set_mdb_range(t_fractal *fractal);
 void		set_julia_range(t_fractal *fractal, int flag);
+void		set_ship_range(t_fractal *fractal);
+void		iterate_abs(t_data *data);
 
 /*render_utils.c*/
 void		update_zoom(t_data *data, int x, int y);

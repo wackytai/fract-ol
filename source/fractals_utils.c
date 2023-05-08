@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 13:02:17 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/05/05 11:37:23 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/05/08 09:49:51 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,41 @@ void	set_julia_range(t_fractal *fractal, int flag)
 	fractal->f_center.x = (fractal->c.x + fractal->offset.x) * fractal->zoom
 		* asp_rt;
 	fractal->f_center.y = (fractal->c.y + fractal->offset.y) * fractal->zoom;
+	return ;
+}
+
+void	set_ship_range(t_fractal *fractal)
+{
+	fractal->pixel.x = 0;
+	fractal->pixel.y = 0;
+	fractal->f_center.x = -1.75 * fractal->zoom;
+	fractal->f_center.y = 0.05 * fractal->zoom;
+	fractal->max.x = 1.5 * fractal->zoom;
+	fractal->min.x = -2.5 * fractal->zoom;
+	fractal->max.y = 2 * fractal->zoom;
+	fractal->min.y = -2 * fractal->zoom;
+	fractal->c.x = 0;
+	fractal->c.y = 0;
+	return ;
+}
+
+void	iterate_abs(t_data *data)
+{
+	int		iter;
+	double	temp;
+
+	iter = -1;
+	temp = 0;
+	while (++iter < MAX_ITER && (data->f->z.x * data->f->z.x)
+		+ (data->f->z.y * data->f->z.y) <= 4)
+	{
+		temp = (data->f->z.x * data->f->z.x) - (data->f->z.y * data->f->z.y)
+			+ data->f->c.x;
+		data->f->z.y = fabs(2 * data->f->z.x * data->f->z.y) + data->f->c.y;
+		if (temp < 0)
+			temp = fabs(temp);
+		data->f->z.x = temp;
+	}
+	get_colour(data, iter);
 	return ;
 }
