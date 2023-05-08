@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 13:49:36 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/05/08 09:07:12 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/05/08 11:47:37 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	initialize(int argc, char **argv, t_data *data, t_fractal *fractal)
 	}
 	else if (argc == 2)
 		check_input(argv, data);
-	else if (argc == 4 && ft_strncmp(argv[1], "Julia", ft_strlen(argv[1])) == 0)
+	else if (argc == 4 && ft_strncmp(argv[1], "julia", ft_strlen(argv[1])) == 0)
 	{
 		data->flag = 3;
 		printf("Dynamic Julia set selected\n");

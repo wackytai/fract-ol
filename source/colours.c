@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 16:59:57 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/05/08 11:17:39 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/05/08 11:37:34 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,8 @@ int	get_colour(t_data *data, int iter)
 {
 	if (iter < MAX_ITER)
 	{
-		if (iter < 10)
-			data->f->colour = colour_lerp(data->f->col_set.colour_1,
-					data->f->col_set.colour_2, (double)iter / MAX_ITER);
-		else if (iter >= 10 && iter < 20)
-			data->f->colour = colour_lerp(data->f->col_set.colour_2,
-					data->f->col_set.colour_3, (double)iter / MAX_ITER);
-		else if (iter >= 20 && iter < 30)
-			data->f->colour = colour_lerp(data->f->col_set.colour_3,
-					data->f->col_set.colour_4, (double)iter / MAX_ITER);
-		else if (iter >= 30 && iter < 40)
-			data->f->colour = colour_lerp(data->f->col_set.colour_4,
-					data->f->col_set.colour_5, (double)iter / MAX_ITER);
+		data->f->colour = colour_lerp(data->f->col_set.colour_1,
+				data->f->col_set.colour_4, (double)iter / MAX_ITER);
 		img_pix_put(&data->img, data->f->pixel.x, data->f->pixel.y,
 			data->f->colour);
 	}
@@ -46,12 +36,12 @@ int	colour_lerp(int start, int end, double gradient)
 	int	b;
 	int	colour;
 
-	r = floor(((start >> 16 & 0xFF) + gradient
-				* ((end >> 16 & 0xFF) - (start >> 16 & 0xFF))));
-	g = floor(((start >> 8 & 0xFF) + gradient
-				* ((end >> 8 & 0xFF) - (start >> 8 & 0xFF))));
-	b = floor(((start & 0xFF) + gradient
-				* ((end & 0xFF) - (start & 0xFF))));
+	r = round(((start >> 16 & 0xFF) + gradient
+				* abs((end >> 16 & 0xFF) - (start >> 16 & 0xFF))));
+	g = round(((start >> 8 & 0xFF) + gradient
+				* abs((end >> 8 & 0xFF) - (start >> 8 & 0xFF))));
+	b = round(((start & 0xFF) + gradient
+				* abs((end & 0xFF) - (start & 0xFF))));
 	colour = r << 16 | g << 8 | b;
 	return (colour);
 }
