@@ -1,12 +1,12 @@
 NAME = fract-ol
-LIB = ./include/fractol.h
+LIB = ./inc/fractol.h
 LIBFT_DIR = ./libft
 LIBFT = ./libft/libft.a
 PRINTF_DIR = ./printf
 PRINTF = ./printf/lib_printf.a
 MLX_DIR = ./mlx_linux
-C_SOURCES = ./source/main.c ./source/render.c ./source/clean.c ./source/interface.c ./source/fractals.c \
-			./source/init.c ./source/fractals_utils.c ./source/colours.c ./source/render_utils.c ./source/ft_atof.c
+C_SOURCES = ./src/main.c ./src/render.c ./src/clean.c ./src/interface.c ./src/fractals.c \
+			./src/init.c ./src/fractals_utils.c ./src/colours.c ./src/render_utils.c ./src/ft_atof.c
 OBJ = $(C_SOURCES:.c=.o)
 REMOVE = @rm -f
 CC = gcc
