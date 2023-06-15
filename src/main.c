@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:44:06 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/06/08 09:19:56 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/06/15 17:41:44 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,10 +80,10 @@ int	main(int argc, char **argv)
 	if (!data.mlx_ptr)
 		return (1);
 	data.win_ptr = mlx_new_window(data.mlx_ptr, W_WIDTH, W_HEIGHT,
-			"fract-ol");
+			"fractol");
 	if (!data.win_ptr)
 	{
-		free(data.win_ptr);
+		free(data.mlx_ptr);
 		return (1);
 	}
 	initialize(argc, argv, &data, &fractal);
@@ -92,7 +92,7 @@ int	main(int argc, char **argv)
 	mlx_hook(data.win_ptr, KeyPress, KeyPressMask, &handle_keypress, &data);
 	mlx_hook(data.win_ptr, KeyRelease, KeyReleaseMask, &handle_keyrelease,
 		&data);
-	mlx_hook(data.win_ptr, DestroyNotify, StructureNotifyMask,
+	mlx_hook(data.win_ptr, DestroyNotify, KeyPressMask,
 		&close_window, &data);
 	mlx_loop(data.mlx_ptr);
 	destroy_all(&data);

@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 13:02:17 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/05/08 13:47:58 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/06/13 11:28:17 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	iterate_complex(t_data *data)
 {
-	int		iter;
-	double	temp;
+	int			iter;
+	long double	temp;
 
 	iter = -1;
 	temp = 0;
@@ -25,7 +25,7 @@ void	iterate_complex(t_data *data)
 		temp = (data->f->z.x * data->f->z.x) - (data->f->z.y * data->f->z.y)
 			+ data->f->c.x;
 		data->f->z.y = (2 * data->f->z.x * data->f->z.y) + data->f->c.y;
-		data->f->z.x = temp;
+		data->f->z.x = (double)temp;
 	}
 	get_colour(data, iter);
 	return ;

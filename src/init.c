@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 13:49:36 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/06/08 09:14:00 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/06/15 17:39:53 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	initialize(int argc, char **argv, t_data *data, t_fractal *fractal)
 	else if (argc == 4 && ft_strncmp(argv[1], "julia", ft_strlen(argv[1])) == 0)
 	{
 		data->flag = 3;
-		printf("Customized Julia set selected\n");
+		ft_printf("Customized Julia set selected\n");
 		fractal->c.x = ft_atof(argv[2]);
 		fractal->c.y = ft_atof(argv[3]);
 		if (fractal->c.x < -2.0 || fractal->c.x > 2.0 || fractal->c.y < -2.0
@@ -49,13 +49,13 @@ void	error_management(t_data *data, int error)
 {
 	if (error == 1)
 	{
-		printf("Usage error: no fractal selected\n");
+		ft_printf("Usage error: no fractal selected\n");
 		data->flag = -1;
 	}
 	else if (error == 2)
-		printf("Usage error: invalid arguments for Julia\n");
+		ft_printf("Usage error: invalid arguments for Julia\n");
 	else if (error == 3)
-		printf("Usage error: wrong arguments\n");
+		ft_printf("Usage error: wrong arguments\n");
 	render_menu(data);
 	return ;
 }
@@ -65,24 +65,24 @@ void	check_input(char **argv, t_data *data)
 	if (ft_strncmp(argv[1], "mandelbrot", ft_strlen(argv[1])) == 0)
 	{
 		data->flag = 1;
-		printf("Mandelbrot set selected\n");
+		ft_printf("Mandelbrot set selected\n");
 		choose_fractal(data);
 	}
 	else if (ft_strncmp(argv[1], "julia", ft_strlen(argv[1])) == 0)
 	{
 		data->flag = 2;
-		printf("Static Julia set selected\n");
+		ft_printf("Static Julia set selected\n");
 		choose_fractal(data);
 	}
 	else if (ft_strncmp(argv[1], "burning_ship", ft_strlen(argv[1])) == 0)
 	{
 		data->flag = 4;
-		printf("Burning Ship set selected\n");
+		ft_printf("Burning Ship set selected\n");
 		choose_fractal(data);
 	}
 	else
 	{
-		printf("Usage Error: Invalid fractal selected!\n");
+		ft_printf("Usage Error: Invalid fractal selected!\n");
 		render_menu(data);
 	}
 	return ;

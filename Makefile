@@ -1,4 +1,4 @@
-NAME = fract-ol
+NAME = fractol
 LIB = ./inc/fractol.h
 LIBFT_DIR = ./libft
 LIBFT = ./libft/libft.a
@@ -10,7 +10,7 @@ C_SOURCES = ./src/main.c ./src/render.c ./src/clean.c ./src/interface.c ./src/fr
 OBJ = $(C_SOURCES:.c=.o)
 REMOVE = @rm -f
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror -g -lm
 MLX_FLAGS = -L$(MLX_DIR) -lmlx -L/usr/lib -lXext -lX11 -lm -lz
 
 all:		$(NAME)
@@ -20,7 +20,7 @@ $(NAME):	$(C_SOURCES)
 			@$(MAKE) --no-print-directory -C $(LIBFT_DIR)
 			@$(MAKE) --no-print-directory -C $(MLX_DIR)
 			$(CC) $(CFLAGS) $(^) $(MLX_FLAGS) -o $(@) $(PRINTF) $(LIBFT) -fsanitize=address
-bonus:
+bonus:		all
 
 clean:
 			$(REMOVE) *.o
