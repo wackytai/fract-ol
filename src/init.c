@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 13:49:36 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/06/15 17:39:53 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/06/19 14:45:55 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ int	initialize(int argc, char **argv, t_data *data, t_fractal *fractal)
 		error_management(data, 1);
 	else if (argc == 2)
 		check_input(argv, data);
-	else if (argc == 4 && ft_strncmp(argv[1], "julia", ft_strlen(argv[1])) == 0)
+	else if (argc == 4
+		&& ft_strncmp(argv[1], "julia", get_len(argv[1], "julia")) == 0)
 	{
 		data->flag = 3;
 		ft_printf("Customized Julia set selected\n");
@@ -62,19 +63,20 @@ void	error_management(t_data *data, int error)
 
 void	check_input(char **argv, t_data *data)
 {
-	if (ft_strncmp(argv[1], "mandelbrot", ft_strlen(argv[1])) == 0)
+	if (ft_strncmp(argv[1], "mandelbrot", get_len(argv[1], "mandelbrot")) == 0)
 	{
 		data->flag = 1;
 		ft_printf("Mandelbrot set selected\n");
 		choose_fractal(data);
 	}
-	else if (ft_strncmp(argv[1], "julia", ft_strlen(argv[1])) == 0)
+	else if (ft_strncmp(argv[1], "julia", get_len(argv[1], "julia")) == 0)
 	{
 		data->flag = 2;
 		ft_printf("Static Julia set selected\n");
 		choose_fractal(data);
 	}
-	else if (ft_strncmp(argv[1], "burning_ship", ft_strlen(argv[1])) == 0)
+	else if (ft_strncmp(argv[1], "burning_ship",
+			get_len(argv[1], "burning_ship")) == 0)
 	{
 		data->flag = 4;
 		ft_printf("Burning Ship set selected\n");

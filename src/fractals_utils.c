@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 13:02:17 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/06/13 11:28:17 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/06/19 14:49:35 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	iterate_complex(t_data *data)
 	while (++iter < MAX_ITER && (data->f->z.x * data->f->z.x)
 		+ (data->f->z.y * data->f->z.y) <= 4)
 	{
-		temp = (data->f->z.x * data->f->z.x) - (data->f->z.y * data->f->z.y)
+		temp = (pow(data->f->z.x, 2)) - (pow(data->f->z.y, 2))
 			+ data->f->c.x;
 		data->f->z.y = (2 * data->f->z.x * data->f->z.y) + data->f->c.y;
 		data->f->z.x = (double)temp;
@@ -85,15 +85,15 @@ void	set_ship_range(t_fractal *fractal)
 
 void	iterate_abs(t_data *data)
 {
-	int		iter;
-	double	temp;
+	int			iter;
+	long double	temp;
 
 	iter = -1;
 	temp = 0;
 	while (++iter < MAX_ITER && (data->f->z.x * data->f->z.x)
 		+ (data->f->z.y * data->f->z.y) <= 4)
 	{
-		temp = (data->f->z.x * data->f->z.x) - (data->f->z.y * data->f->z.y)
+		temp = (pow(data->f->z.x, 2)) - (pow(data->f->z.y, 2))
 			+ data->f->c.x;
 		data->f->z.y = fabs(2 * data->f->z.x * data->f->z.y) + data->f->c.y;
 		if (temp < 0)

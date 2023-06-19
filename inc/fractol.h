@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 14:07:25 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/05/08 13:17:47 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/06/19 14:50:56 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,62 +83,62 @@ typedef struct s_data
 }	t_data;
 
 /*main.c*/
-int			main(int argc, char **argv);
-int			handle_no_event(void *data);
-int			handle_keyrelease(int keysym, void *data);
-int			handle_keypress(int keysym, t_data *data);
-int			handle_mouse_input(int button, int x, int y, t_data *data);
+int		main(int argc, char **argv);
+int		handle_no_event(void *data);
+int		handle_keyrelease(int keysym, void *data);
+int		handle_keypress(int keysym, t_data *data);
+int		handle_mouse_input(int button, int x, int y, t_data *data);
 
 /*render.c*/
-void		img_pix_put(t_img *img, int x, int y, int colour);
-int			render_rect(t_img *img, t_rect rect);
-void		render_background(t_img *img, int colour);
-int			fill_image(t_data *data);
-int			render(t_data *data);
+void	img_pix_put(t_img *img, int x, int y, int colour);
+int		render_rect(t_img *img, t_rect rect);
+void	render_background(t_img *img, int colour);
+int		fill_image(t_data *data);
+int		render(t_data *data);
 
 /*fractals.c*/
-int			ft_mandelbrot(t_data *data);
-int			ft_julia_static(t_data *data);
-int			ft_burning_ship(t_data *data);
+int		ft_mandelbrot(t_data *data);
+int		ft_julia(t_data *data);
+int		ft_burning_ship(t_data *data);
 
 /*fractals_utils.c*/
-void		iterate_complex(t_data *data);
-void		set_mdb_range(t_fractal *fractal);
-void		set_julia_range(t_fractal *fractal, int flag);
-void		set_ship_range(t_fractal *fractal);
-void		iterate_abs(t_data *data);
+void	iterate_complex(t_data *data);
+void	set_mdb_range(t_fractal *fractal);
+void	set_julia_range(t_fractal *fractal, int flag);
+void	set_ship_range(t_fractal *fractal);
+void	iterate_abs(t_data *data);
 
 /*render_utils.c*/
-void		update_zoom(t_data *data, int x, int y);
-void		pan_image(t_data *data, int flag);
-void		update_colour_set(t_data *data, int flag);
+void	update_zoom(t_data *data, int x, int y);
+void	pan_image(t_data *data, int flag);
+void	update_colour_set(t_data *data, int flag);
 
 /*interface.c*/
-int			create_body_commands(t_data *data, int offset_x, int offset_y);
-int			create_menu(t_data *data);
-int			render_menu(t_data *data);
+int		create_body_commands(t_data *data, int offset_x, int offset_y);
+int		create_menu(t_data *data);
+int		render_menu(t_data *data);
 
 /*init.c*/
-int			initialize(int argc, char **argv, t_data *data, t_fractal *fractal);
-void		error_management(t_data *data, int error);
-void		check_input(char **argv, t_data *data);
-void		set_data(t_data *data);
-void		choose_fractal(t_data *data);
+int		initialize(int argc, char **argv, t_data *data, t_fractal *fractal);
+void	error_management(t_data *data, int error);
+void	check_input(char **argv, t_data *data);
+void	set_data(t_data *data);
+void	choose_fractal(t_data *data);
 
 /*clean.c*/
-int			destroy_all(t_data *data);
-int			close_window(t_data *data);
-int			update_screen(t_data *data);
+int		destroy_all(t_data *data);
+int		close_window(t_data *data);
+int		update_screen(t_data *data);
 
 /*colours.c*/
-int			get_colour(t_data *data, int iter);
-int			colour_lerp(int start, int end, double gradient);
-void		set_palettes(int set, t_palette *plt);
-void		set_palettes_2(int set, t_palette *plt);
-
+int		get_colour(t_data *data, int iter);
+int		colour_lerp(int start, int end, double gradient);
+void	set_palettes(int set, t_palette *plt);
+void	set_palettes_2(int set, t_palette *plt);
 
 /*ft_atof.c*/
-double		ft_atof(char *str);
-int			skip_char(char **str, int flag);
+double	ft_atof(char *str);
+int		skip_char(char **str, int flag);
+int		get_len(char *s1, char *s2);
 
 #endif
