@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 13:02:19 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/05/08 13:48:08 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/06/19 14:44:04 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,17 @@ int	skip_char(char **str, int flag)
 		return (1);
 	}
 	return (1);
+}
+
+int	get_len(char *s1, char *s2)
+{
+	int	len1;
+	int	len2;
+
+	len1 = ft_strlen(s1);
+	len2 = ft_strlen(s2);
+	if (len1 > len2)
+		return (len1);
+	else
+		return (len2);
 }

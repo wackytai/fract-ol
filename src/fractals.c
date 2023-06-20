@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 13:45:35 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/05/08 13:48:03 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/06/19 14:50:06 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	ft_mandelbrot(t_data *data)
 	return (0);
 }
 
-int	ft_julia_static(t_data *data)
+int	ft_julia(t_data *data)
 {
 	while (data->f->pixel.x < W_WIDTH)
 	{

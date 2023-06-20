@@ -9,7 +9,7 @@ C_SOURCES = ./src/main.c ./src/render.c ./src/clean.c ./src/interface.c ./src/fr
 			./src/init.c ./src/fractals_utils.c ./src/colours.c ./src/render_utils.c ./src/ft_atof.c
 OBJ = $(C_SOURCES:.c=.o)
 REMOVE = @rm -f
-CC = gcc
+CC = @gcc
 CFLAGS = -Wall -Wextra -Werror -g -lm
 MLX_FLAGS = -L$(MLX_DIR) -lmlx -L/usr/lib -lXext -lX11 -lm -lz
 
