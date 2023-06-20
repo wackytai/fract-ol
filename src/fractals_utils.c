@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 13:02:17 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/06/20 08:55:40 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/06/20 09:03:14 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,8 @@ void	set_ship_range(t_fractal *fractal)
 
 void	iterate_abs(t_data *data)
 {
-	int		iter;
-	double	temp;
+	int			iter;
+	long double	temp;
 
 	iter = -1;
 	temp = 0;
