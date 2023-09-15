@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 13:02:17 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/06/20 09:03:14 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/09/15 12:06:59 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,8 @@ void	set_julia_range(t_fractal *fractal, int flag)
 	}
 	fractal->f_center.x = (fractal->c.x + fractal->offset.x) * fractal->zoom
 		* asp_rt;
-	fractal->f_center.y = (fractal->c.y + fractal->offset.y) * fractal->zoom;
+	fractal->f_center.y = (fractal->c.y + fractal->offset.y) * fractal->zoom
+		* asp_rt;
 	return ;
 }
 
@@ -86,7 +87,7 @@ void	set_ship_range(t_fractal *fractal)
 void	iterate_abs(t_data *data)
 {
 	int			iter;
-	long double	temp;
+	double	temp;
 
 	iter = -1;
 	temp = 0;
